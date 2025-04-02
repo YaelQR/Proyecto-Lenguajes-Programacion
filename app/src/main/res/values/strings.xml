@@ -29,4 +29,26 @@
     <string name="mi_perfil"><![CDATA[Mi perfil >>]]></string>
     <string name="_350_00">$350.00</string>
     <string name="_1550_00">$1550.00</string>
+    <string name="agregar_ingreso">+ Agregar ingreso</string>
+    <string name="ingrese_monto">Ingrese monto</string>
+    <string name="ingrese_fecha">Ingrese fecha</string>
+    <string name="regresar">Regresar</string>
+    <string name="agregar_ingreso2">Agregar Ingreso</string>
+    <string name="categoria">Categoria</string>
+    <string name="fecha">Fecha</string>
+    <string name="monto">Monto</string>
+    <string name="agregar_gasto">+ Agregar gasto</string>
+    <string name="ingrese_monto2">Ingrese monto</string>
+    <string name="ingrese_fecha2">Ingrese fecha</string>
+    <string name="regresar2">Regresar</string>
+    <string name="agregar_gasto2">Agregar Gasto</string>
+    <string name="categoria2">Categoria</string>
+    <string name="fecha2">Fecha</string>
+    <string name="monto2">Monto</string>
+    <string-array name="categorias">
+        <item>Transporte</item>
+        <item>Comida</item>
+        <item>Servicios</item>
+        <item>Entretenimiento</item>
+    </string-array>
 </resources>
