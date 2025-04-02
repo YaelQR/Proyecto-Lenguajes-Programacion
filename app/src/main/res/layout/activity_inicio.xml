@@ -26,8 +26,8 @@ tools:context=".InicioActivity">
 
     <View
         android:id="@+id/cuadroBlanco"
-        android:layout_width="392dp"
-        android:layout_height="642dp"
+        android:layout_width="393dp"
+        android:layout_height="807dp"
         android:background="@drawable/redondeado"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,23 +44,23 @@ tools:context=".InicioActivity">
         android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.164" />
+        app:layout_constraintVertical_bias="0.12" />
 
     <View
         android:id="@+id/cuadroBlanco3"
-        android:layout_width="354dp"
-        android:layout_height="394dp"
+        android:layout_width="369dp"
+        android:layout_height="538dp"
 
         android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.949" />
+        app:layout_constraintVertical_bias="0.904" />
 
     <TextView
         android:id="@+id/titulo"
@@ -134,7 +134,7 @@ tools:context=".InicioActivity">
         android:id="@+id/titulo10"
         android:layout_width="216dp"
         android:layout_height="36dp"
-        android:layout_marginTop="456dp"
+        android:layout_marginTop="472dp"
         android:text="@string/ingreso2"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
@@ -143,7 +143,7 @@ tools:context=".InicioActivity">
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintHorizontal_bias="0.235"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -166,9 +166,9 @@ tools:context=".InicioActivity">
 
     <TextView
         android:id="@+id/titulo5"
-        android:layout_width="191dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="436dp"
+        android:layout_width="186dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="460dp"
         android:text="@string/_550_00"
         android:textAlignment="textEnd"
         android:textAllCaps="false"
@@ -177,7 +177,7 @@ tools:context=".InicioActivity">
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintHorizontal_bias="0.782"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -194,7 +194,7 @@ tools:context=".InicioActivity">
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintHorizontal_bias="0.777"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:targetApi="35" />
@@ -279,15 +279,17 @@ tools:context=".InicioActivity">
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco"
         app:layout_constraintEnd_toStartOf="@+id/IngresosBtn"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco" />
+        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/IngresosBtn"
         android:layout_width="114dp"
         android:layout_height="77dp"
         android:layout_marginTop="144dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="20dp"
 
         android:background="@drawable/border"
         android:drawableTop="@drawable/ingresos"
@@ -303,7 +305,7 @@ tools:context=".InicioActivity">
         android:id="@+id/EstadoBtn"
         android:layout_width="114dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="16dp"
 
         android:background="@drawable/border"
         android:drawableTop="@drawable/estado"
@@ -313,8 +315,8 @@ tools:context=".InicioActivity">
 
         app:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="222dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="237dp" />
 
     <View
         android:id="@+id/divider"
@@ -325,14 +327,16 @@ tools:context=".InicioActivity">
         android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/cuadroBlanco"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.741"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titulo2" />
+        app:layout_constraintTop_toTopOf="@+id/titulo2"
+        app:layout_constraintVertical_bias="0.045" />
 
     <View
         android:id="@+id/divider3"
         android:layout_width="395dp"
         android:layout_height="5dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="4dp"
         android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -348,8 +352,10 @@ tools:context=".InicioActivity">
         android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco" />
+        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco"
+        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/divider5"
@@ -358,8 +364,10 @@ tools:context=".InicioActivity">
         android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.591"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IngresosBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/IngresosBtn"
+        app:layout_constraintVertical_bias="0.353" />
 
     <View
         android:id="@+id/divider6"
@@ -372,7 +380,7 @@ tools:context=".InicioActivity">
         app:layout_constraintHorizontal_bias="0.591"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cuadroBlanco"
-        app:layout_constraintVertical_bias="0.349" />
+        app:layout_constraintVertical_bias="0.164" />
 
     <Button
         android:id="@+id/button7"
