@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:id="@+id/main"
+android:background="#2567E8"
+tools:context=".InicioActivity">
+
+    <TextView
+        android:id="@+id/titulo2"
+        android:layout_width="206dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/claudia_guerrero"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="#FAF7F7"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/cuadroBlanco"
+        android:layout_width="392dp"
+        android:layout_height="642dp"
+        android:background="@drawable/redondeado"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.684"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.842" />
+
+    <View
+        android:id="@+id/cuadroBlanco2"
+        android:layout_width="362dp"
+        android:layout_height="104dp"
+
+        android:background="@drawable/border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.164" />
+
+    <View
+        android:id="@+id/cuadroBlanco3"
+        android:layout_width="354dp"
+        android:layout_height="394dp"
+
+        android:background="@drawable/border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.949" />
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="206dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="116dp"
+        android:text="@string/saldo_actual"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titulo3"
+        android:layout_width="216dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="368dp"
+        android:text="@string/seguimiento"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.184"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titulo8"
+        android:layout_width="216dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="520dp"
+        android:text="@string/gasto"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/material_dynamic_neutral40"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titulo9"
+        android:layout_width="216dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="596dp"
+        android:text="@string/ingreso"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/material_dynamic_neutral40"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titulo10"
+        android:layout_width="216dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="456dp"
+        android:text="@string/ingreso2"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/material_dynamic_neutral40"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titulo4"
+        android:layout_width="206dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="164dp"
+        android:text="@string/mxm"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titulo5"
+        android:layout_width="191dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="436dp"
+        android:text="@string/_550_00"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titulo12"
+        android:layout_width="191dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="520dp"
+        android:text="@string/_350_00"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        android:textColor="@android:color/system_error_800"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="35" />
+
+    <TextView
+        android:id="@+id/titulo13"
+        android:layout_width="191dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="604dp"
+        android:text="@string/_1550_00"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Ingreso1Menu"
+        android:layout_width="191dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="140dp"
+        android:text="@string/_1000_00"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="45dp"
+        android:layout_height="33dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toTopOf="@+id/titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.983"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.192"
+        app:srcCompat="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="60dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/redondeado2"
+        android:contentDescription="@string/todo"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"
+        android:src="@tools:sample/avatars[0]"
+        app:layout_constraintBottom_toTopOf="@+id/titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/GastosBtn"
+        android:layout_width="114dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="147dp"
+        android:layout_marginBottom="418dp"
+
+        android:background="@drawable/border"
+        android:drawableTop="@drawable/gastos"
+        android:drawablePadding="1dp"
+        android:text="@string/gastos"
+
+        android:textColor="#0F0E0E"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco"
+        app:layout_constraintEnd_toStartOf="@+id/IngresosBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco" />
+
+    <Button
+        android:id="@+id/IngresosBtn"
+        android:layout_width="114dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="16dp"
+
+        android:background="@drawable/border"
+        android:drawableTop="@drawable/ingresos"
+        android:drawablePadding="1dp"
+        android:text="@string/ingresos"
+
+        android:textColor="#0F0E0E"
+        app:backgroundTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/EstadoBtn"
+        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco" />
+
+    <Button
+        android:id="@+id/EstadoBtn"
+        android:layout_width="114dp"
+        android:layout_height="77dp"
+        android:layout_marginEnd="20dp"
+
+        android:background="@drawable/border"
+        android:drawableTop="@drawable/estado"
+        android:drawablePadding="1dp"
+        android:text="@string/estado"
+        android:textColor="#0F0E0E"
+
+        app:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="222dp"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="380dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginBottom="7dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/cuadroBlanco"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/titulo2" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="395dp"
+        android:layout_height="5dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="340dp"
+        android:layout_height="0.7dp"
+        android:layout_marginTop="355dp"
+        android:layout_marginBottom="286dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco" />
+
+    <View
+        android:id="@+id/divider5"
+        android:layout_width="340dp"
+        android:layout_height="0.7dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IngresosBtn" />
+
+    <View
+        android:id="@+id/divider6"
+        android:layout_width="340dp"
+        android:layout_height="0.7dp"
+        android:layout_marginTop="429dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.591"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco"
+        app:layout_constraintVertical_bias="0.349" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#0350D075"
+        android:backgroundTint="#00D5AFAF"
+        android:text="@string/mi_perfil"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="27dp"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
