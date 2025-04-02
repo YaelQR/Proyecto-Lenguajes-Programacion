@@ -24,6 +24,12 @@
         <activity 
             android:name=".InicioActivity" 
             android:exported="false"/>
+        <activity 
+            android:name=".AgregarGastoActivity" 
+            android:exported="false"/>
+        <activity 
+            android:name=".AgregarIngresoActivity" 
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
