@@ -12,6 +12,9 @@ import com.google.android.material.button.MaterialButton
 
 class LogininicialActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_logininicial)
@@ -33,6 +36,11 @@ class LogininicialActivity : AppCompatActivity() {
             val intent = Intent(this, RecuperarPswdActivity::class.java)
             startActivity(intent)
         }
+
+        //Codigo de Menu principal
+
+
+
     }
 
 }

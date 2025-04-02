@@ -15,4 +15,5 @@
     <string name="ingresa_la_informacion_requerida">Ingresa la informacion requerida</string>
     <string name="contrase_a_nueva">Contraseña Nueva</string>
     <string name="filtrar">Filtrar</string>
+    <strin name="mostrarhistorial">Se muestra el historial de gastos del usuario</strin>
 </resources>
