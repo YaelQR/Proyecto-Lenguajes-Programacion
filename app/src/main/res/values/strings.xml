@@ -51,4 +51,6 @@
         <item>Servicios</item>
         <item>Entretenimiento</item>
     </string-array>
+    <string name="filtrar">Filtrar</string>
+    <strin name="mostrarhistorial">Se muestra el historial de gastos del usuario</strin>
 </resources>
