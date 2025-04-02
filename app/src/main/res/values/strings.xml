@@ -14,4 +14,19 @@
     <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
     <string name="ingresa_la_informacion_requerida">Ingresa la informacion requerida</string>
     <string name="contrase_a_nueva">Contraseña Nueva</string>
+    <string name="_1000_00">$ 1000.00</string>
+    <string name="claudia_guerrero">Claudia Guerrero</string>
+    <string name="saldo_actual">Saldo actual:</string>
+    <string name="seguimiento">Seguimiento</string>
+    <string name="gasto">Gasto</string>
+    <string name="ingreso">Ingreso</string>
+    <string name="ingreso2">Ingreso</string>
+    <string name="mxm">MXM</string>
+    <string name="_550_00">$ 550.00</string>
+    <string name="gastos">Gastos</string>
+    <string name="ingresos">Ingresos</string>
+    <string name="estado">Estado</string>
+    <string name="mi_perfil"><![CDATA[Mi perfil >>]]></string>
+    <string name="_350_00">$350.00</string>
+    <string name="_1550_00">$1550.00</string>
 </resources>
