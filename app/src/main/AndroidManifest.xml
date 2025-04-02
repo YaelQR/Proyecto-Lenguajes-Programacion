@@ -21,6 +21,9 @@
         <activity
             android:name=".RecuperarPswdActivity"
             android:exported="false"/>
+        <activity 
+            android:name=".InicioActivity" 
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
