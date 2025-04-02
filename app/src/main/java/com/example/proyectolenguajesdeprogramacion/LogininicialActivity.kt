@@ -33,6 +33,12 @@ class LogininicialActivity : AppCompatActivity() {
             val intent = Intent(this, RecuperarPswdActivity::class.java)
             startActivity(intent)
         }
+
+        val buttonLogin = findViewById<Button>(R.id.button)
+        buttonLogin.setOnClickListener {
+            val intent = Intent(this, InicioActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }
