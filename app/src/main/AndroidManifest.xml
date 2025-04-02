@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ProyectoLenguajesDeProgramacion"
         tools:targetApi="31">
         <activity
+            android:name=".MenuGastos"
+            android:exported="false" />
+        <activity
             android:name=".LogininicialActivity"
             android:exported="false" />
         <activity
@@ -20,7 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".RecuperarPswdActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
