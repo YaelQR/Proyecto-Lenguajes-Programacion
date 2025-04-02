@@ -268,7 +268,6 @@ tools:context=".InicioActivity">
         android:layout_width="114dp"
         android:layout_height="77dp"
         android:layout_marginTop="147dp"
-        android:layout_marginBottom="418dp"
 
         android:background="@drawable/border"
         android:drawableTop="@drawable/gastos"
@@ -277,7 +276,7 @@ tools:context=".InicioActivity">
 
         android:textColor="#0F0E0E"
         app:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco"
+        app:layout_constraintBottom_toTopOf="@+id/cuadroBlanco3"
         app:layout_constraintEnd_toStartOf="@+id/IngresosBtn"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
@@ -291,13 +290,15 @@ tools:context=".InicioActivity">
         android:layout_marginTop="144dp"
         android:layout_marginEnd="20dp"
 
+        android:layout_marginBottom="30dp"
         android:background="@drawable/border"
         android:drawableTop="@drawable/ingresos"
         android:drawablePadding="1dp"
-        android:text="@string/ingresos"
 
+        android:text="@string/ingresos"
         android:textColor="#0F0E0E"
         app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/cuadroBlanco3"
         app:layout_constraintEnd_toStartOf="@+id/EstadoBtn"
         app:layout_constraintTop_toTopOf="@+id/cuadroBlanco" />
 
@@ -305,18 +306,19 @@ tools:context=".InicioActivity">
         android:id="@+id/EstadoBtn"
         android:layout_width="114dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="20dp"
 
+        android:layout_marginBottom="28dp"
         android:background="@drawable/border"
         android:drawableTop="@drawable/estado"
         android:drawablePadding="1dp"
         android:text="@string/estado"
-        android:textColor="#0F0E0E"
 
+        android:textColor="#0F0E0E"
         app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/cuadroBlanco3"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="237dp" />
+        tools:ignore="MissingConstraints" />
 
     <View
         android:id="@+id/divider"
@@ -389,12 +391,16 @@ tools:context=".InicioActivity">
         android:background="#0350D075"
         android:backgroundTint="#00D5AFAF"
         android:text="@string/mi_perfil"
-        android:textAlignment="viewStart"
+        android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="27dp"
+        app:layout_constraintBottom_toBottomOf="@+id/titulo2"
+        app:layout_constraintEnd_toEndOf="@+id/titulo2"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/titulo2"
+        app:layout_constraintVertical_bias="0.236"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

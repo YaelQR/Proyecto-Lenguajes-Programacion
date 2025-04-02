@@ -31,13 +31,23 @@ class AgregarGastoActivity : AppCompatActivity() {
 
         // Para detectar qué opción se selecciona
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 val opcionSeleccionada = parent.getItemAtPosition(position).toString()
-                Toast.makeText(applicationContext, "Seleccionaste: $opcionSeleccionada", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    applicationContext,
+                    "Seleccionaste: $opcionSeleccionada",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
                 // Acción si no se selecciona nada
             }
+        }
     }
 }
