@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Proyecto Lenguajes de Programacion</string>
+    <string name="inicia_sesi_n_en_tu_cuenta">Inicia sesión en tu cuenta</string>
+    <string name="iniciar_sesi_n">Iniciar Sesión</string>
+    <string name="todo">TODO</string>
+    <string name="iniciar_sesi_on">Iniciar Sesión</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="email">Email</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="olvide_mi_contrase_a">Olvide mi Contraseña</string>
+    <string name="num">###-###-####</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
+    <string name="ingresa_la_informacion_requerida">Ingresa la informacion requerida</string>
+    <string name="contrase_a_nueva">Contraseña Nueva</string>
 </resources>
