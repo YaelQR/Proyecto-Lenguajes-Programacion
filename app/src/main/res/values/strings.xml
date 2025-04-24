@@ -24,7 +24,9 @@
     <string name="mxm">MXM</string>
     <string name="_550_00">$ 550.00</string>
     <string name="gastos">Gastos</string>
+    <string name="historial_gastos">Historial de gastos</string>
     <string name="ingresos">Ingresos</string>
+    <string name="historial_ingresos">Historial de ingresos</string>
     <string name="estado">Estado</string>
     <string name="mi_perfil"><![CDATA[Mi perfil >>]]></string>
     <string name="_350_00">$350.00</string>
@@ -52,5 +54,5 @@
         <item>Entretenimiento</item>
     </string-array>
     <string name="filtrar">Filtrar</string>
-    <strin name="mostrarhistorial">Se muestra el historial de gastos del usuario</strin>
+    <string name="mostrarhistorial">Se muestra el historial de gastos del usuario</string>
 </resources>
