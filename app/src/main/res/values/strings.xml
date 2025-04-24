@@ -55,4 +55,7 @@
     </string-array>
     <string name="filtrar">Filtrar</string>
     <string name="mostrarhistorial">Se muestra el historial de gastos del usuario</string>
+
+    <string name="boton_regresar">Regresar a la pantalla anterior</string>
+
 </resources>
