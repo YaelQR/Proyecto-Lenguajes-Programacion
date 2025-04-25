@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import android.text.TextUtils
+import android.widget.EditText
 import android.widget.Toast
 
 
@@ -30,6 +31,9 @@ class LogininicialActivity : AppCompatActivity() {
             insets
         }
 
+        var textAreaEmail = findViewById<EditText>(R.id.textEmail)
+        var textAreaPassword = findViewById<EditText>(R.id.textPassword)
+
         val button = findViewById<MaterialButton>(R.id.buttonSignUp)
 
         button.setOnClickListener {
@@ -46,15 +50,33 @@ class LogininicialActivity : AppCompatActivity() {
         val buttonLogin = findViewById<Button>(R.id.buttonLogIn)
         buttonLogin.setOnClickListener {
 
-
-
-
-            val intent = Intent(this, InicioActivity::class.java)
-            startActivity(intent)
+            login(textAreaEmail.text.toString(), textAreaPassword.text.toString())
+            Log.i("LoginScreen", "El usuario actual es: "+auth.currentUser.toString())
+            Log.i("LoginScreen", "El id es ${auth.currentUser?.uid.toString()}")
+            verificarUsuario()
         }
 
         auth = Firebase.auth
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        verificarUsuario()
+    }
+
+    private fun verificarUsuario(){
+        if(auth.currentUser != null){
+            Log.i("LoginScreen", "La sesión esta iniciada. Se accede a la app")
+            Log.i("LoginScreen", "El usuario actual es: "+ auth.currentUser?.email.toString())
+
+            val intent = Intent(this, InicioActivity::class.java)
+            startActivity(intent)
+        }else{
+            Log.i("LoginScreen", "No hay sesión iniciada")
+            Log.i("LoginScreen", "El usuario actual es: "+ auth.currentUser?.email.toString())
+        }
     }
 
     private fun login(email: String, password: String) {
@@ -65,7 +87,24 @@ class LogininicialActivity : AppCompatActivity() {
             Toast.makeText(this, "No se puede iniciar sesión debido a errores en los campos", Toast.LENGTH_SHORT).show()
         }
 
-
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d("LoginScreen", "signInWithEmail:success")
+                    val user = auth.currentUser
+                    //updateUI(user)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w("LoginScreen", "signInWithEmail:failure", task.exception)
+                    Toast.makeText(
+                        baseContext,
+                        "Authentication failed.",
+                        Toast.LENGTH_SHORT,
+                    ).show()
+                    //updateUI(null)
+                }
+            }
 
     }
 
