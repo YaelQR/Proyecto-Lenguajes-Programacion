@@ -19,7 +19,7 @@ class RecuperarPswdActivity : AppCompatActivity() {
             insets
         }
 
-        val button2 = findViewById<MaterialButton>(R.id.button2)
+        val button2 = findViewById<MaterialButton>(R.id.buttonSignUp)
 
         button2.setOnClickListener {
             val intent = Intent(this, LogininicialActivity::class.java)
