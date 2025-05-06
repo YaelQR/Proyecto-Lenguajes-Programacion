@@ -22,6 +22,8 @@ class LogininicialActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        auth = Firebase.auth
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_logininicial)
@@ -32,17 +34,18 @@ class LogininicialActivity : AppCompatActivity() {
         }
 
         var textAreaEmail = findViewById<EditText>(R.id.textEmail)
-        var textAreaPassword = findViewById<EditText>(R.id.textPassword)
+        var textAreaPassword = findViewById<EditText>(R.id.pswdRegister)
 
-        val button = findViewById<MaterialButton>(R.id.buttonSignUp)
+        val buttonReg = findViewById<MaterialButton>(R.id.buttonRegistro)
 
-        button.setOnClickListener {
+        buttonReg.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 
-        val button1 = findViewById<Button>(R.id.buttonRecoverPass)
-        button1.setOnClickListener {
+        val buttonRec = findViewById<Button>(R.id.buttonRecoverPass)
+
+        buttonRec.setOnClickListener {
             val intent = Intent(this, RecuperarPswdActivity::class.java)
             startActivity(intent)
         }
@@ -56,7 +59,6 @@ class LogininicialActivity : AppCompatActivity() {
             verificarUsuario()
         }
 
-        auth = Firebase.auth
 
     }
 
