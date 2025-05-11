@@ -2,30 +2,149 @@ package com.example.proyectolenguajesdeprogramacion
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Log
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var txtEmail: EditText
+    private lateinit var txtPassword: EditText
+    private lateinit var txtNombre: EditText
+    private lateinit var txtApellido: EditText
+    private lateinit var txtTelefono: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_register)
+
+        auth = FirebaseAuth.getInstance()
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val button2 = findViewById<MaterialButton>(R.id.buttonSignUp)
+        // Inicializa los EditText
+        txtEmail = findViewById(R.id.emailRegister)
+        txtPassword = findViewById(R.id.pswdRegister)
+        txtNombre = findViewById(R.id.txtNombre)
+        txtApellido = findViewById(R.id.txtApellido)
+        txtTelefono = findViewById(R.id.txtTelefono)
 
-        button2.setOnClickListener {
-            val intent = Intent(this, LogininicialActivity::class.java)
-            startActivity(intent)
+        val buttonRegistro = findViewById<MaterialButton>(R.id.buttonRegistro)
+        buttonRegistro.setOnClickListener {
+            val email = txtEmail.text.toString()
+            val password = txtPassword.text.toString()
+            val nombre = txtNombre.text.toString()
+            val apellido = txtApellido.text.toString()
+            val telefono = txtTelefono.text.toString()
+
+            if (validateRegisterData(email, password, nombre, apellido, telefono)) {
+                performRegister(email, password, nombre, apellido, telefono)
+            }
         }
-
     }
 
+    private fun performRegister(email: String, password: String, nombre: String, apellido: String, telefono: String) {
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val user = auth.currentUser
+                val uid = user?.uid ?: return@addOnCompleteListener
+
+                val db = FirebaseFirestore.getInstance()
+                val userMap = hashMapOf(
+                    "email" to email,
+                    "nombre" to nombre,
+                    "apellido" to apellido,
+                    "telefono" to telefono,
+                    "uid" to uid
+                )
+
+                db.collection("usuarios").document(uid)
+                    .set(userMap)
+                    .addOnSuccessListener {
+                        // Aquí creamos las subcolecciones vacías de "ingresos" y "gastos"
+                        createEmptySubcollections(uid)
+                        Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
+
+                        // Navegar al InicioActivity o a la pantalla principal
+                        val intent = Intent(this, InicioActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(this, "Error al guardar usuario: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+
+            } else {
+                Toast.makeText(this, "Error en el registro: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun createEmptySubcollections(uid: String) {
+        val db = FirebaseFirestore.getInstance()
+
+        // Crear subcolección de "ingresos" (vacía)
+        db.collection("usuarios").document(uid).collection("ingresos")
+            .document("sample").set(hashMapOf("sample" to "sample"))
+
+        // Crear subcolección de "gastos" (vacía)
+        db.collection("usuarios").document(uid).collection("gastos")
+            .document("sample").set(hashMapOf("sample" to "sample"))
+    }
+
+    private fun validateRegisterData(
+        email: String,
+        password: String,
+        nombre: String,
+        apellido: String,
+        telefono: String
+    ): Boolean {
+
+        // Validar email
+        if (TextUtils.isEmpty(email) || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(this, "Correo electrónico no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        // Validar contraseña
+        if (TextUtils.isEmpty(password) || password.length < 6) {
+            Toast.makeText(this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        // Validar nombre (no vacío y sin espacios)
+        if (TextUtils.isEmpty(nombre) || nombre.contains(" ")) {
+            Toast.makeText(this, "El nombre no debe estar vacío ni contener espacios", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        // Validar apellido (no vacío y sin espacios)
+        if (TextUtils.isEmpty(apellido) || apellido.contains(" ")) {
+            Toast.makeText(this, "El apellido no debe estar vacío ni contener espacios", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        // Validar teléfono (10 dígitos)
+        if (!telefono.matches(Regex("^\\d{10}$"))) {
+            Toast.makeText(this, "El teléfono debe tener exactamente 10 dígitos numéricos", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        return true
+    }
 }

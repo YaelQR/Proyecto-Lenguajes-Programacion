@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Proyecto Lenguajes de Programacion</string>
+    <string name="app_name">Finanzi</string>
     <string name="inicia_sesi_n_en_tu_cuenta">Inicia sesión en tu cuenta</string>
     <string name="iniciar_sesi_n">Iniciar Sesión</string>
     <string name="todo">TODO</string>
@@ -57,5 +57,11 @@
     <string name="mostrarhistorial">Se muestra el historial de gastos del usuario</string>
 
     <string name="boton_regresar">Regresar a la pantalla anterior</string>
+    <string name="cerrar_sesi_n">Cerrar Sesión</string>
+    <string name="welcome_message">Bienvenido a tu aplicación de finanzas</string>
+    <string name="button_start">Comenzar</string>
+    <string name="app_logo">Logo de la aplicación</string>
+    <string name="bienvenido_a_tu_aplicaci_n_de_finanzas">Bienvenido a tu aplicación de finanzas</string>
+    <string name="logo_de_la_aplicaci_n">Logo de la aplicación</string>
 
 </resources>

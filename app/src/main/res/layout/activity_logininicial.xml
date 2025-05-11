@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
     android:background="#2567E8"
     tools:context=".LogininicialActivity">
 
@@ -12,6 +12,7 @@
         android:id="@+id/titulo"
         android:layout_width="206dp"
         android:layout_height="86dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="34dp"
         android:text="@string/inicia_sesi_n_en_tu_cuenta"
         android:textAlignment="center"
@@ -23,7 +24,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -53,17 +53,18 @@
         android:id="@+id/buttonLogIn"
         android:layout_width="200dp"
         android:layout_height="62dp"
+        android:layout_marginTop="40dp"
         android:text="@string/iniciar_sesi_on"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:backgroundTint="#2567E8"
         app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegistro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cuadroBlanco3"
-        app:layout_constraintVertical_bias="0.224" />
+        app:layout_constraintVertical_bias="0.352" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -79,7 +80,7 @@
         app:srcCompat="@drawable/logo" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonSignUp"
+        android:id="@+id/buttonRegistro"
         android:layout_width="172dp"
         android:layout_height="56dp"
         android:text="@string/registrarse"
@@ -92,7 +93,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cuadroBlanco3"
-        app:layout_constraintVertical_bias="0.547" />
+        app:layout_constraintVertical_bias="0.459" />
 
     <EditText
         android:id="@+id/textEmail"
@@ -103,6 +104,7 @@
         android:hint="@string/email"
         android:inputType="text"
         android:textStyle="normal"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
         app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
         app:layout_constraintHorizontal_bias="0.48"
@@ -111,29 +113,30 @@
         app:layout_constraintVertical_bias="0.185" />
 
     <EditText
-        android:id="@+id/textPassword"
+        android:id="@+id/pswdRegister"
         android:layout_width="210dp"
         android:layout_height="57dp"
         android:autofillHints=""
         android:ems="10"
+        android:hint="@string/contrase_a"
         android:inputType="textPassword"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
         app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3"
         app:layout_constraintTop_toBottomOf="@+id/textEmail"
-        app:layout_constraintVertical_bias="0.253"
-        android:hint="@string/contrase_a" />
+        app:layout_constraintVertical_bias="0.253" />
 
     <Button
         android:id="@+id/buttonRecoverPass"
         android:layout_width="187dp"
         android:layout_height="49dp"
         android:text="@string/olvide_mi_contrase_a"
-        app:backgroundTint="#2567E8"
         android:textColor="#FFFFFF"
+        app:backgroundTint="#2567E8"
         app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
         app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
         app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3"
-        app:layout_constraintTop_toBottomOf="@+id/textPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/pswdRegister" />
 </androidx.constraintlayout.widget.ConstraintLayout>
