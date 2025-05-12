@@ -307,10 +307,12 @@
 
             <android.widget.ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:padding="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView4"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4">
 
                 <LinearLayout
                     android:id="@+id/linearSeguimiento"
@@ -320,10 +322,9 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
+                    android:gravity="start"
                     android:orientation="vertical"
-                    android:paddingTop="16dp"
-                    android:gravity="start">
-                </LinearLayout>
+                    android:paddingTop="16dp"></LinearLayout>
             </android.widget.ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
