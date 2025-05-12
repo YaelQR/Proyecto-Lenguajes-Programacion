@@ -99,7 +99,7 @@
 
 
         <EditText
-            android:id="@+id/edittext_ingreso2"
+            android:id="@+id/edittext_date"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
@@ -238,7 +238,7 @@
             android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edittext_ingreso2" />
+            app:layout_constraintTop_toBottomOf="@+id/edittext_date" />
 
         <View
             android:id="@+id/divider6"
