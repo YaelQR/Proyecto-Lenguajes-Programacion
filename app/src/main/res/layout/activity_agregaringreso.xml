@@ -8,257 +8,268 @@
     android:background="#2567E8"
     tools:context=".AgregarIngresoActivity">
 
-    <View
-        android:id="@+id/cuadroBlanco"
-        android:layout_width="393dp"
-        android:layout_height="807dp"
-        android:background="@drawable/redondeado"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
+    <ImageButton
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="45dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="112dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ingresos" />
+        android:id="@+id/buttonReturn"
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/AgregarGastoBtn"
-        android:layout_width="235dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="80dp"
-        android:text="@string/agregar_ingreso"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:backgroundTint="#2567E8"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.224" />
-
-    <EditText
-        android:id="@+id/edittext_ingreso"
-        android:layout_width="150dp"
+        android:layout_width="61dp"
         android:layout_height="48dp"
-        android:layout_marginStart="149dp"
-        android:layout_marginTop="32dp"
-        android:hint="@string/ingrese_monto"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/titulo4"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+
+        android:background="@color/transparent"
+        android:contentDescription="@string/boton_regresar"
+
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco"
-        app:layout_constraintTop_toBottomOf="@+id/titulo3" />
-
-    <EditText
-        android:id="@+id/edittext_ingreso2"
-        android:layout_width="150dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="149dp"
-        android:layout_marginTop="176dp"
-        android:hint="@string/ingrese_fecha"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/titulo4"
-        app:layout_constraintHorizontal_bias="0.643"
-        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco"
-        app:layout_constraintTop_toBottomOf="@+id/titulo3" />
-
-    <Button
-        android:id="@+id/regresarBtn"
-        android:layout_width="137dp"
-        android:layout_height="59dp"
-
-        android:layout_marginStart="28dp"
-        android:background="@drawable/regresar"
-
-        android:backgroundTint="#00EDEDED"
-        android:drawablePadding="0dp"
-        android:text="@string/regresar"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019" />
-
-    <TextView
-        android:id="@+id/titulo3"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="100dp"
-        android:text="@string/agregar_ingreso2"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/titulo8"
-        android:layout_width="171dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="264dp"
-        android:text="@string/categoria"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textColor="@color/material_dynamic_neutral40"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.179"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/titulo9"
-        android:layout_width="216dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="324dp"
-        android:text="@string/fecha"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textColor="@color/material_dynamic_neutral40"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/titulo10"
-        android:layout_width="216dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="188dp"
-        android:text="@string/monto"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textColor="@color/material_dynamic_neutral40"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/titulo4"
-        android:layout_width="78dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="188dp"
-        android:text="@string/mxm"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="45dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
         android:contentDescription="@string/todo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.942"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
     <View
         android:id="@+id/divider"
-        android:layout_width="380dp"
-        android:layout_height="1dp"
-        android:layout_marginBottom="7dp"
+        android:layout_width="0dp"
+        android:layout_height="1.5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
         android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/cuadroBlanco"
+        app:layout_constraintBottom_toTopOf="@+id/constraintMain"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.741"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <View
-        android:id="@+id/divider5"
-        android:layout_width="340dp"
-        android:layout_height="0.7dp"
-        android:layout_marginTop="92dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/divider7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.591"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo3"
-        app:layout_constraintVertical_bias="0.006" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintMain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="340dp"
-        android:layout_height="0.7dp"
-        android:layout_marginBottom="84dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/divider7"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/redondeado"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.591"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider5"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <View
-        android:id="@+id/divider7"
-        android:layout_width="340dp"
-        android:layout_height="0.7dp"
-        android:layout_marginTop="80dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.591"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo8"
-        app:layout_constraintVertical_bias="0.025" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/AgregarIngresoBtn"
+            android:layout_width="0dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="80dp"
+            android:text="@string/agregar_ingreso"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:backgroundTint="#2567E8"
+            app:cornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <View
-        android:id="@+id/divider6"
-        android:layout_width="340dp"
-        android:layout_height="0.7dp"
-        android:layout_marginTop="64dp"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.591"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco" />
+        <EditText
+            android:id="@+id/edittext_ingreso"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:hint="@string/ingrese_monto2"
+            android:inputType="text"
+            android:autofillHints="name"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/titulo4"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/divider5" />
 
-    <Spinner
-        android:id="@+id/categoria"
-        android:layout_width="150dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginBottom="606dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco"
-        app:layout_constraintEnd_toEndOf="@+id/divider2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/divider5"
-        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco" />
+
+        <EditText
+            android:id="@+id/edittext_date"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:hint="@string/ingrese_fecha2"
+            android:inputType="date"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/titulo3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/agregar_ingreso2"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/titulo8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/categoria2"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/material_dynamic_neutral40"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider7" />
+
+        <TextView
+            android:id="@+id/titulo9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/fecha2"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/material_dynamic_neutral40"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+        <TextView
+            android:id="@+id/titulo10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/monto2"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/material_dynamic_neutral40"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+        <TextView
+            android:id="@+id/titulo4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/mxm"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/h3"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/todo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ingresos" />
+
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titulo3" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edittext_ingreso" />
+
+        <View
+            android:id="@+id/divider7"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edittext_date" />
+
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categoria" />
+
+        <Spinner
+            android:id="@+id/categoria"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/divider7" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="124dp"
+            app:layout_constraintGuide_percent="0.35" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
