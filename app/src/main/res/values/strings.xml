@@ -63,5 +63,6 @@
     <string name="app_logo">Logo de la aplicación</string>
     <string name="bienvenido_a_tu_aplicaci_n_de_finanzas">Bienvenido a tu aplicación de finanzas</string>
     <string name="logo_de_la_aplicaci_n">Logo de la aplicación</string>
+    <string name="title_activity_menu_ingresos">MenuIngresos</string>
 
 </resources>
