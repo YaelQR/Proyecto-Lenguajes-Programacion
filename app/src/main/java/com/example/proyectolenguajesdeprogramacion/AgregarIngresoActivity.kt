@@ -75,6 +75,10 @@ class AgregarIngresoActivity : AppCompatActivity() {
             }
         }
 
+        val botonRegresar = findViewById<ImageButton>(R.id.buttonReturn)
+        botonRegresar.setOnClickListener {
+            finish()
+        }
 
         val btnAgregarGasto = findViewById<Button>(R.id.AgregarIngresoBtn)
 
