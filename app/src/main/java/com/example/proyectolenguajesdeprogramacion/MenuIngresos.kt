@@ -54,7 +54,7 @@ class MenuIngresos : AppCompatActivity() {
     private fun cargarIngresos() {
         val db = FirebaseFirestore.getInstance()
         val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
-        val tabla = findViewById<TableLayout>(R.id.tableLayout2)
+        val tabla = findViewById<TableLayout>(R.id.tableLayout)
 
         while (tabla.childCount > 1) {
             tabla.removeViewAt(1)
