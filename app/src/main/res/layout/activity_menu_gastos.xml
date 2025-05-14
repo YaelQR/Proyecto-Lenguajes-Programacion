@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:fitsSystemWindows="true"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -12,257 +13,218 @@
     tools:context=".MenuGastos"
     >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageButton
+        android:id="@+id/buttonReturn"
+        android:layout_width="61dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/transparent"
+        android:contentDescription="@string/boton_regresar"
+        app:layout_constraintEnd_toStartOf="@+id/imageView5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
+
+        android:layout_height="1dp"
+        android:layout_marginStart="20dp"
+
+        android:layout_marginTop="80dp"
+
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineF"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        >
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.99" />
 
-        <ImageButton
-            android:id="@+id/buttonReturn"
-            android:layout_width="61dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/transparent"
-            android:contentDescription="@string/boton_regresar"
-            app:layout_constraintEnd_toStartOf="@+id/imageView5"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_arrow_back_24" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_information"
+        android:layout_width="0dp"
+        android:layout_height="0dp
+"
+        android:minHeight="780dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/redondeado"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view">
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/AgregarGastoBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/background_box"
+            android:text="@string/agregar"
+            android:textColor="@color/black"
+            android:textSize="@dimen/h3"
+            app:cornerRadius="25dp"
+            app:iconGravity="top"
+            app:iconSize="@dimen/h1"
+            app:iconTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:strokeColor="@color/border_box"
+            app:strokeWidth="2dp" />
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-
-            android:layout_height="1dp"
-            android:layout_marginStart="20dp"
-
-            android:layout_marginTop="80dp"
-
-            android:layout_marginEnd="20dp"
-            android:background="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/gastos"
+            android:textColor="@color/black"
+            android:textSize="@dimen/h1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineF"
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="33dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/gasto" />
+
+        <TextView
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.99" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout_information"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:minHeight="780dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/redondeado"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineF"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/historial_gastos"
+            android:textColor="@color/black"
+            android:textSize="@dimen/h3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view">
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/AgregarGastoBtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+        <com.google.android.material.button.MaterialButton
 
-                android:layout_marginEnd="12dp"
+            android:id="@+id/button_sort"
 
-                android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/background_box"
-                android:text="@string/agregar"
-                android:textColor="@color/black"
-                android:textSize="@dimen/h3"
-                app:cornerRadius="25dp"
-                app:iconGravity="top"
-                app:iconSize="@dimen/h1"
-                app:iconTint="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:strokeColor="@color/border_box"
-                app:strokeWidth="2dp" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/gastos"
-                android:textColor="@color/black"
-                android:textSize="@dimen/h1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="33dp"
-                android:layout_height="38dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/gasto" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/historial_gastos"
-                android:textColor="@color/black"
-                android:textSize="@dimen/h3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-            <com.google.android.material.button.MaterialButton
-
-                android:id="@+id/button_sort"
-
-                style="@style/Widget.Material3.Button.TextButton.Icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="20dp"
+            style="@style/Widget.Material3.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
 
 
-                android:text="@string/filtrar"
-                android:textColor="@color/black"
+            android:text="@string/filtrar"
+            android:textColor="@color/black"
 
-                android:textSize="@dimen/h3"
+            android:textSize="@dimen/h3"
 
-                app:icon="@drawable/filter_svg"
-                app:iconTint="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:icon="@drawable/filter_svg"
+            app:iconTint="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
 
-                app:strokeColor="@color/black"
-                app:strokeWidth="1dp" />
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp" />
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_sort"
+            tools:layout_editor_absoluteX="0dp">
 
-            <TableLayout
-                android:id="@+id/tableLayout"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintTable"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
 
-                android:layout_marginEnd="12dp"
-
-                android:stretchColumns="0,1,2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button_sort">
-
-                <TableRow
+                <TableLayout
+                    android:id="@+id/tableLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="10dp">
+                    android:layout_marginStart="12dp"
 
-                    <TextView
-                        android:layout_column="0"
-                        android:padding="5dp"
-                        android:text="@string/monto"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textStyle="bold|italic" />
+                    android:layout_marginEnd="12dp"
 
-                    <TextView
-                        android:layout_column="1"
-                        android:padding="5dp"
-                        android:text="@string/fecha"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textStyle="bold|italic" />
+                    android:stretchColumns="0,1,2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:layout_column="2"
-                        android:padding="5dp"
-                        android:text="@string/categoria"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textStyle="bold|italic" />
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp">
 
-                    <TextView />
+                        <TextView
+                            android:layout_column="0"
+                            android:padding="5dp"
+                            android:text="@string/monto"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textStyle="bold|italic" />
+
+                        <TextView
+                            android:layout_column="1"
+                            android:padding="5dp"
+                            android:text="@string/fecha"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textStyle="bold|italic" />
+
+                        <TextView
+                            android:layout_column="2"
+                            android:padding="5dp"
+                            android:text="@string/categoria"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textStyle="bold|italic" />
+
+                        <TextView />
 
 
-                </TableRow>
+                    </TableRow>
 
 
-            </TableLayout>
+                </TableLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
-
-<!--
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#2567E8"
-    tools:context=".MenuGastos">
-
-    &lt;!&ndash;<View
-        android:layout_width="371dp"
-        android:layout_height="786dp"
-
-        android:layout_marginTop="80dp"
-
-        android:background="@drawable/redondeado"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-
-    </View>&ndash;&gt;
-
-    &lt;!&ndash;<ScrollView
-        android:layout_width="412dp"
-        android:layout_height="915dp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-    </ScrollView>&ndash;&gt;
-
-    <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_gravity="start"
-        android:layout_marginStart="@dimen/marco_actity"
-        android:layout_marginTop="@dimen/marco_actity" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>-->
