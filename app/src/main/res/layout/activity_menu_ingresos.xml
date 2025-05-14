@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fitsSystemWindows="true"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,7 +21,7 @@
             android:layout_width="61dp"
             android:layout_height="48dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:background="@color/transparent"
             android:contentDescription="@string/boton_regresar"
             app:layout_constraintEnd_toStartOf="@+id/imageView5"
@@ -33,7 +34,7 @@
             android:id="@+id/imageView5"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -46,21 +47,20 @@
             android:layout_height="1dp"
             android:layout_marginStart="20dp"
 
-            android:layout_marginTop="80dp"
-
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonReturn" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout_information"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/redondeado"
             android:minHeight="800dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +72,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="12dp"
                 android:layout_marginBottom="20dp"
                 android:backgroundTint="@color/background_box"
                 android:text="Agregar"
@@ -91,7 +91,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
                 android:text="Ingresos"
                 android:textColor="@color/black"
@@ -104,7 +104,7 @@
                 android:layout_width="33dp"
                 android:layout_height="38dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ingresos" />
@@ -113,7 +113,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
                 android:text="Historial de Ingresos"
                 android:textColor="@color/black"
@@ -123,12 +123,12 @@
 
             <com.google.android.material.button.MaterialButton
 
-                style="@style/Widget.Material3.Button.TextButton.Icon"
-
                 android:id="@+id/button_sort"
+
+                style="@style/Widget.Material3.Button.TextButton.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="20dp"
 
 
@@ -139,21 +139,21 @@
 
                 app:icon="@drawable/filter_svg"
                 app:iconTint="@color/black"
-                app:strokeColor="@color/black"
-                app:strokeWidth="1dp"
-
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp" />
 
 
             <TableLayout
                 android:id="@+id/tableLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="20dp"
 
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="12dp"
 
                 android:stretchColumns="0,1,2"
                 app:layout_constraintEnd_toEndOf="parent"
