@@ -3,7 +3,6 @@ package com.example.proyectolenguajesdeprogramacion
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -12,7 +11,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterActivity : AppCompatActivity() {
@@ -23,6 +21,8 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var txtNombre: EditText
     private lateinit var txtApellido: EditText
     private lateinit var txtTelefono: EditText
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +77,6 @@ class RegisterActivity : AppCompatActivity() {
                     .set(userMap)
                     .addOnSuccessListener {
                         // Aquí creamos las subcolecciones vacías de "ingresos" y "gastos"
-                        createEmptySubcollections(uid)
                         Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
 
                         // Navegar al InicioActivity o a la pantalla principal
@@ -93,18 +92,6 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error en el registro: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    private fun createEmptySubcollections(uid: String) {
-        val db = FirebaseFirestore.getInstance()
-
-        // Crear subcolección de "ingresos" (vacía)
-        db.collection("usuarios").document(uid).collection("ingresos")
-            .document("sample").set(hashMapOf("sample" to "sample"))
-
-        // Crear subcolección de "gastos" (vacía)
-        db.collection("usuarios").document(uid).collection("gastos")
-            .document("sample").set(hashMapOf("sample" to "sample"))
     }
 
     private fun validateRegisterData(
@@ -148,3 +135,5 @@ class RegisterActivity : AppCompatActivity() {
         return true
     }
 }
+
+
