@@ -53,6 +53,15 @@
         <item>Servicios</item>
         <item>Entretenimiento</item>
     </string-array>
+    <string-array name="categorias_ingresos">
+        <item>Salario</item>
+        <item>Ventas</item>
+        <item>Rentas</item>
+        <item>Regalos</item>
+        <item>Reembolsos</item>
+        <item>Premios</item>
+        <item>Otro ingreso</item>
+    </string-array>
     <string name="filtrar">Filtrar</string>
     <string name="mostrarhistorial">Se muestra el historial de gastos del usuario</string>
 
