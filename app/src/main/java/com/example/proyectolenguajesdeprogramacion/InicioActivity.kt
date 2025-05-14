@@ -14,6 +14,9 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class InicioActivity : AppCompatActivity() {
 
@@ -25,82 +28,31 @@ class InicioActivity : AppCompatActivity() {
     private var totalGastos = 0.0
     private lateinit var saldoTextView: TextView
 
+    data class Movimiento(
+        val tipo: String,
+        val monto: Double,
+        val fecha: Date,
+        val categoria: String
+    )
+
+    val movimientos = mutableListOf<Movimiento>()
+
+    override fun onResume() {
+        super.onResume()
+        movimientos.clear()
+        linearLayout.removeAllViews()
+        completedTasks = 0
+        cargarMovimientos()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_inicio)
-
         auth = FirebaseAuth.getInstance()
-        val db = FirebaseFirestore.getInstance()
-        val user = auth.currentUser
-
-        val titulo2 = findViewById<TextView>(R.id.titulo2)
         linearLayout = findViewById(R.id.linearSeguimiento)
         saldoTextView = findViewById(R.id.text_saldo)
 
-        // Obtener datos del usuario
-        user?.uid?.let { uid ->
-            db.collection("usuarios").document(uid).get()
-                .addOnSuccessListener { document ->
-                    val nombre = document.getString("nombre") ?: ""
-                    val apellido = document.getString("apellido") ?: ""
-                    titulo2.text = if (document.exists()) "Hola, $nombre $apellido" else "Hola, Usuario"
-                }
-                .addOnFailureListener {
-                    titulo2.text = "Hola, Usuario"
-                }
-
-            // Limpiar layout
-            linearLayout.removeAllViews()
-
-            // Referencias a subcolecciones
-            val ingresosRef = db.collection("usuarios").document(uid).collection("ingresos")
-            val gastosRef = db.collection("usuarios").document(uid).collection("gastos")
-
-            // Flags
-            var hasIngresos = false
-            var hasGastos = false
-            // Dentro de onCreate(), modifica los listeners:
-            ingresosRef.get().addOnSuccessListener { ingresosSnapshot ->
-                totalIngresos = 0.0 // Reiniciar acumulador
-                if (!ingresosSnapshot.isEmpty) {
-                    for (document in ingresosSnapshot) {
-                        totalIngresos += document.getDouble("monto") ?: 0.0
-                    }
-                }
-                calcularSaldo()
-
-                hasIngresos = !ingresosSnapshot.isEmpty
-                if (hasIngresos) {
-                    for (document in ingresosSnapshot) {
-                        val textView = crearItemTexto("$${document.getDouble("monto")} - ${document.getString("descripcion")}", Color.GREEN)
-                        linearLayout.addView(textView)
-                    }
-                }
-                completedTasks++
-                if (completedTasks == totalTasks) checkAndShowEmptyMessage(hasIngresos, hasGastos)
-            }
-
-            gastosRef.get().addOnSuccessListener { gastosSnapshot ->
-                totalGastos = 0.0 // Reiniciar acumulador
-                if (!gastosSnapshot.isEmpty) {
-                    for (document in gastosSnapshot) {
-                        totalGastos += document.getDouble("monto") ?: 0.0
-                    }
-                }
-                calcularSaldo()
-
-                hasGastos = !gastosSnapshot.isEmpty
-                if (hasGastos) {
-                    for (document in gastosSnapshot) {
-                        val textView = crearItemTexto("$${document.getDouble("monto")} - ${document.getString("descripcion")}", Color.RED)
-                        linearLayout.addView(textView)
-                    }
-                }
-                completedTasks++
-                if (completedTasks == totalTasks) checkAndShowEmptyMessage(hasIngresos, hasGastos)
-            }
-        }
 
         // Botón cerrar sesión
         val btnCerrarSesion = findViewById<MaterialButton>(R.id.btnCerrarSesion)
@@ -133,6 +85,119 @@ class InicioActivity : AppCompatActivity() {
         }
     }
 
+    private fun cargarMovimientos() {
+        val db = FirebaseFirestore.getInstance()
+        val user = auth.currentUser
+
+        val titulo2 = findViewById<TextView>(R.id.titulo2)
+        linearLayout = findViewById(R.id.linearSeguimiento)
+        saldoTextView = findViewById(R.id.text_saldo)
+        var hasIngresos = false
+        var hasGastos = false
+
+        // Obtener datos del usuario
+        user?.uid?.let { uid ->
+            db.collection("usuarios").document(uid).get()
+                .addOnSuccessListener { document ->
+                    val nombre = document.getString("nombre") ?: ""
+                    val apellido = document.getString("apellido") ?: ""
+                    titulo2.text = if (document.exists()) "Hola, $nombre $apellido" else "Hola, Usuario"
+                }
+                .addOnFailureListener {
+                    titulo2.text = "Hola, Usuario"
+                }
+
+            // Limpiar layout
+            linearLayout.removeAllViews()
+
+            // Referencias a subcolecciones
+            val ingresosRef = db.collection("usuarios").document(uid).collection("ingresos")
+            val gastosRef = db.collection("usuarios").document(uid).collection("gastos")
+
+            ingresosRef.get().addOnSuccessListener { ingresosSnapshot ->
+                totalIngresos = 0.0
+                if (!ingresosSnapshot.isEmpty) {
+                    hasIngresos = true
+                    // agregar movimientos...
+                }
+                val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+                for (document in ingresosSnapshot) {
+                    val fechaStr = document.getString("fecha") ?: continue
+                    val fecha = try { formatoFecha.parse(fechaStr) } catch (e: Exception) { Date(0) }
+                    val monto = document.getDouble("monto") ?: 0.0
+                    val categoria = document.getString("categoria") ?: "Sin categoría"
+
+                    totalIngresos += monto
+                    movimientos.add(Movimiento("ingreso", monto, fecha, categoria))
+                }
+
+                calcularSaldo()
+                completedTasks++
+                if (completedTasks == totalTasks) mostrarMovimientos()
+            }
+
+            gastosRef.get().addOnSuccessListener { gastosSnapshot ->
+                totalGastos = 0.0
+                if (!gastosSnapshot.isEmpty) {
+                    hasGastos = true
+                    // agregar movimientos...
+                }
+                val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+                for (document in gastosSnapshot) {
+                    val fechaStr = document.getString("fecha") ?: continue
+                    val fecha = try { formatoFecha.parse(fechaStr) } catch (e: Exception) { Date(0) }
+                    val monto = document.getDouble("monto") ?: 0.0
+                    val categoria = document.getString("categoria") ?: "Sin categoría"
+
+                    totalGastos += monto
+                    movimientos.add(Movimiento("gasto", monto, fecha, categoria))
+                }
+
+                calcularSaldo()
+                completedTasks++
+                if (completedTasks == totalTasks) mostrarMovimientos()
+            }
+        }
+    }
+
+    private fun mostrarMovimientos() {
+        linearLayout.removeAllViews()
+
+        if (movimientos.isEmpty()) {
+            checkAndShowEmptyMessage(false, false)
+            return
+        }
+
+        val listaOrdenada = movimientos.sortedByDescending { it.fecha }
+
+        var fechaAnterior: String? = null
+        val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+        for (mov in listaOrdenada) {
+            val fechaActual = formatoFecha.format(mov.fecha)
+
+            if (fechaActual != fechaAnterior) {
+                // Crear TextView de encabezado de fecha
+                val fechaTextView = TextView(this).apply {
+                    text = "📅 $fechaActual"
+                    setTextColor(Color.DKGRAY)
+                    textSize = 16f
+                    setPadding(dpToPx(10), dpToPx(20), dpToPx(10), dpToPx(10))
+                }
+                linearLayout.addView(fechaTextView)
+                fechaAnterior = fechaActual
+            }
+
+            // Agregar el movimiento como lo haces ahora
+            val color = if (mov.tipo == "ingreso") Color.GREEN else Color.RED
+            val texto = "${mov.categoria} - \$${"%.2f".format(mov.monto)}"
+            val textView = crearItemTexto(texto, color)
+            linearLayout.addView(textView)
+        }
+    }
+
     private fun crearItemTexto(texto: String, color: Int): TextView {
         val textView = TextView(this)
         textView.text = texto
@@ -151,6 +216,8 @@ class InicioActivity : AppCompatActivity() {
 
         return textView
     }
+
+
 
     private fun checkAndShowEmptyMessage(hasIngresos: Boolean, hasGastos: Boolean) {
         if (!hasIngresos && !hasGastos) {
