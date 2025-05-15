@@ -131,26 +131,19 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <com.google.android.material.button.MaterialButton
-
             android:id="@+id/button_sort"
-
             style="@style/Widget.Material3.Button.TextButton.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="20dp"
-
-
             android:text="@string/filtrar"
             android:textColor="@color/black"
-
             android:textSize="@dimen/h3"
-
             app:icon="@drawable/filter_svg"
             app:iconTint="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
-
             app:strokeColor="@color/black"
             app:strokeWidth="1dp" />
 

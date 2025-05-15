@@ -19,12 +19,18 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import android.graphics.Color
+import android.util.Log
+import androidx.appcompat.app.AlertDialog
+import com.google.android.material.button.MaterialButton
+import androidx.core.content.edit
 
 class MenuIngresos : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        cargarIngresos()
+        val ordenGuardado = getSharedPreferences("config", MODE_PRIVATE)
+            .getString("orden_gastos", "fecha_desc") ?: "fecha_desc"
+        cargarIngresos(ordenGuardado)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,15 +55,44 @@ class MenuIngresos : AppCompatActivity() {
             finish()
         }
 
+        findViewById<MaterialButton>(R.id.button_sort).setOnClickListener {
+            val opciones = arrayOf(
+                "Monto (menor a mayor)",
+                "Monto (mayor a menor)",
+                "Fecha (más reciente)",
+                "Fecha (más antigua)",
+                "Categoría (A-Z)"
+            )
+            val valoresOrden = arrayOf(
+                "monto_asc",
+                "monto_desc",
+                "fecha_desc",
+                "fecha_asc",
+                "categoria_asc"
+            )
+
+            AlertDialog.Builder(this)
+                .setTitle("Ordenar por")
+                .setItems(opciones) { _, which ->
+                    val orden = valoresOrden[which]
+
+                    val prefs = getSharedPreferences("config", MODE_PRIVATE)
+                    prefs.edit() { putString("orden_gastos", orden) }
+
+                    cargarIngresos(orden)
+                }
+                .setNegativeButton("Cancelar", null)
+                .show()
+        }
     }
 
-    private fun cargarIngresos() {
+    private fun cargarIngresos(orden: String = "fecha_desc") {
         val db = FirebaseFirestore.getInstance()
         val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
         val tabla = findViewById<TableLayout>(R.id.tableLayout)
 
-        while (tabla.childCount > 1) {
-            tabla.removeViewAt(1)
+        for (i in tabla.childCount - 1 downTo 0) {
+            tabla.removeViewAt(i)
         }
 
         val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -65,19 +100,35 @@ class MenuIngresos : AppCompatActivity() {
         db.collection("usuarios").document(uid).collection("ingresos")
             .get()
             .addOnSuccessListener { snapshot ->
-                val listaOrdenada = snapshot.documents.sortedByDescending {
-                    val fechaStr = it.getString("fecha")
-                    try {
-                        formatoFecha.parse(fechaStr)
-                    } catch (e: Exception) {
-                        Date(0)
+                val listaOrdenada = when (orden) {
+                    "monto_asc" -> snapshot.documents.sortedBy { it.getDouble("monto") ?: 0.0 }
+                    "monto_desc" -> snapshot.documents.sortedByDescending { it.getDouble("monto") ?: 0.0 }
+                    "fecha_asc" -> snapshot.documents.sortedBy {
+                        try {
+                            formatoFecha.parse(it.getString("fecha") ?: "") ?: Date(0)
+                        } catch (e: Exception) {
+                            Date(0)
+                        }
                     }
+
+                    "fecha_desc" -> snapshot.documents.sortedByDescending {
+                        try {
+                            formatoFecha.parse(it.getString("fecha") ?: "") ?: Date(0)
+                        } catch (e: Exception) {
+                            Date(0)
+                        }
+                    }
+
+                    "categoria_asc" -> snapshot.documents.sortedBy { it.getString("categoria") ?: "" }
+                    else -> snapshot.documents
                 }
 
                 for (document in listaOrdenada) {
-                    val monto = document.getDouble("monto") ?: 0.0
-                    val categoria = document.getString("categoria") ?: "Sin categoría"
-                    val fecha = document.getString("fecha") ?: "Fecha desconocida"
+                    val monto = document.getDouble("monto") ?: continue
+                    val categoria = document.getString("categoria") ?: continue
+                    val fecha = document.getString("fecha") ?: continue
+
+                    Log.d("IngresoDebug", "Monto: $monto - Fecha: $fecha - Categoria: $categoria")
 
                     // Crear nueva fila
                     val fila = TableRow(this).apply {
