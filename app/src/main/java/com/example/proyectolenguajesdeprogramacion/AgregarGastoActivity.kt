@@ -16,46 +16,76 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.Button
 import android.widget.ImageButton
+import androidx.appcompat.app.AlertDialog
 
 class AgregarGastoActivity : AppCompatActivity() {
+    private var ignorarSeleccion = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_agregargasto)
 
+
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val db = FirebaseFirestore.getInstance()
+        val categoriasRef = db.collection("usuarios").document(uid).collection("categorias_gastos")
+
+        val opcionesBase = mutableListOf<String>()
         val spinner = findViewById<Spinner>(R.id.categoria)
 
-        // Cargar las opciones desde strings.xml
-        val opciones = resources.getStringArray(R.array.categorias)
+        categoriasRef.get().addOnSuccessListener { snapshot ->
+            for (doc in snapshot) {
+                val nombre = doc.getString("nombre")
+                if (!nombre.isNullOrBlank()) {
+                    opcionesBase.add(nombre)
+                }
+            }
+            opcionesBase.add("Agregar nueva categoría...") // ✅ Solo aquí
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionesBase)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+            spinner.setSelection(0)
+        }
 
-        // Crear un adaptador para el Spinner
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opciones)
-
-        // Especificar el layout para el menú desplegable
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionesBase)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        // Asignar el adaptador al Spinner
-        spinner.adapter = adapter
-
-        // Para detectar qué opción se selecciona
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val opcionSeleccionada = parent.getItemAtPosition(position).toString()
-                Toast.makeText(
-                    applicationContext,
-                    "Seleccionaste: $opcionSeleccionada",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                if (ignorarSeleccion) {
+                    ignorarSeleccion = false
+                    return
+                }
+                val opcion = parent.getItemAtPosition(position).toString()
+                if (opcion == "Agregar nueva categoría...") {
+                    val input = EditText(this@AgregarGastoActivity)
+                    AlertDialog.Builder(this@AgregarGastoActivity)
+                        .setTitle("Nueva categoría")
+                        .setView(input)
+                        .setPositiveButton("Agregar") { _, _ ->
+                            val nuevaCategoria = input.text.toString().trim()
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Acción si no se selecciona nada
+                            if (nuevaCategoria.isNotEmpty()) {
+                                opcionesBase.add(opcionesBase.size - 1, nuevaCategoria)
+
+                                val nuevoAdapter = ArrayAdapter(this@AgregarGastoActivity, android.R.layout.simple_spinner_item, opcionesBase)
+                                nuevoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                spinner.adapter = nuevoAdapter
+
+                                ignorarSeleccion = true
+                                spinner.setSelection(opcionesBase.indexOf(nuevaCategoria))
+
+                                guardarCategoriaPersonalizada(nuevaCategoria)
+                            }
+                        }
+                        .setNegativeButton("Cancelar", null)
+                        .show()
+                } else {
+                    Toast.makeText(applicationContext, "Seleccionaste: $opcion", Toast.LENGTH_SHORT).show()
+                }
             }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
         val editTextFecha = findViewById<EditText>(R.id.edittext_date)
@@ -81,11 +111,6 @@ class AgregarGastoActivity : AppCompatActivity() {
             }
         }
 
-        val botonRegresar = findViewById<ImageButton>(R.id.buttonReturn)
-        botonRegresar.setOnClickListener {
-            finish()
-        }
-
         val btnAgregarGasto = findViewById<Button>(R.id.AgregarGastoBtn)
 
         btnAgregarGasto.setOnClickListener {
@@ -100,6 +125,11 @@ class AgregarGastoActivity : AppCompatActivity() {
             // Validación
             if (monto == null || monto <= 0.0) {
                 editTextIngreso.error = "Ingresa un monto válido"
+                return@setOnClickListener
+            }
+
+            if (categoriaSeleccionada == "Agregar nueva categoría...") {
+                Toast.makeText(this, "Selecciona una categoría válida", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -136,4 +166,13 @@ class AgregarGastoActivity : AppCompatActivity() {
             }
         }
     }
+    private fun guardarCategoriaPersonalizada(categoria: String) {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val db = FirebaseFirestore.getInstance()
+        val nuevaCategoria = hashMapOf("nombre" to categoria)
+        db.collection("usuarios").document(uid)
+            .collection("categorias_gastos") // 🔄 corregido aquí
+            .add(nuevaCategoria)
+    }
+
 }
