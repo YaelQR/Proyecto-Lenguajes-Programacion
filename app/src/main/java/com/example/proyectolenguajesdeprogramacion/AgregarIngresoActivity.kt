@@ -16,6 +16,8 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 import java.util.*
 
 class AgregarIngresoActivity : AppCompatActivity() {
@@ -165,5 +167,14 @@ class AgregarIngresoActivity : AppCompatActivity() {
             .document(uid)
             .collection("categorias_ingresos")
             .add(nuevaCategoria)
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+        if (currentFocus != null) {
+            val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+            currentFocus!!.clearFocus()
+        }
+        return super.dispatchTouchEvent(ev)
     }
 }
