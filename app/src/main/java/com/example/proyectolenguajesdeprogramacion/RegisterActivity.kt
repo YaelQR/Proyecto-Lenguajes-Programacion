@@ -76,12 +76,10 @@ class RegisterActivity : AppCompatActivity() {
                 db.collection("usuarios").document(uid)
                     .set(userMap)
                     .addOnSuccessListener {
-                        // Aquí creamos las subcolecciones vacías de "ingresos" y "gastos"
-                        Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
+                        guardarCategoriasPorDefecto(uid) // ✅ aquí
 
-                        // Navegar al InicioActivity o a la pantalla principal
-                        val intent = Intent(this, InicioActivity::class.java)
-                        startActivity(intent)
+                        Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, InicioActivity::class.java))
                         finish()
                     }
                     .addOnFailureListener { e ->
@@ -91,6 +89,22 @@ class RegisterActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Error en el registro: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    private fun guardarCategoriasPorDefecto(uid: String) {
+        val db = FirebaseFirestore.getInstance()
+        val categoriasGastos = listOf("Transporte", "Comida", "Servicios", "Entretenimiento")
+        val categoriasIngresos = listOf("Salario", "Ventas", "Rentas", "Regalos", "Reembolsos", "Premios")
+
+        val gastosRef = db.collection("usuarios").document(uid).collection("categorias_gastos")
+        val ingresosRef = db.collection("usuarios").document(uid).collection("categorias_ingresos")
+
+        categoriasGastos.forEach { nombre ->
+            gastosRef.add(mapOf("nombre" to nombre))
+        }
+        categoriasIngresos.forEach { nombre ->
+            ingresosRef.add(mapOf("nombre" to nombre))
         }
     }
 

@@ -95,6 +95,9 @@ class InicioActivity : AppCompatActivity() {
         var hasIngresos = false
         var hasGastos = false
 
+
+
+
         // Obtener datos del usuario
         user?.uid?.let { uid ->
             db.collection("usuarios").document(uid).get()
@@ -107,6 +110,19 @@ class InicioActivity : AppCompatActivity() {
                     titulo2.text = "Hola, Usuario"
                 }
 
+            val refIngresos = db.collection("usuarios").document(uid).collection("categorias_ingresos")
+            val refGastos = db.collection("usuarios").document(uid).collection("categorias_gastos")
+
+            refIngresos.get().addOnCompleteListener { ingresosTask ->
+                refGastos.get().addOnCompleteListener { gastosTask ->
+                    val ingresosVacios = ingresosTask.isSuccessful && (ingresosTask.result?.isEmpty ?: true)
+                    val gastosVacios = gastosTask.isSuccessful && (gastosTask.result?.isEmpty ?: true)
+
+                    if (ingresosVacios || gastosVacios) {
+                        guardarCategoriasPorDefecto(uid)
+                    }
+                }
+            }
             // Limpiar layout
             linearLayout.removeAllViews()
 
@@ -217,6 +233,21 @@ class InicioActivity : AppCompatActivity() {
         return textView
     }
 
+    private fun guardarCategoriasPorDefecto(uid: String) {
+        val db = FirebaseFirestore.getInstance()
+        val categoriasGastos = listOf("Transporte", "Comida", "Servicios", "Entretenimiento")
+        val categoriasIngresos = listOf("Salario", "Ventas", "Rentas", "Regalos", "Reembolsos", "Premios")
+
+        val gastosRef = db.collection("usuarios").document(uid).collection("categorias_gastos")
+        val ingresosRef = db.collection("usuarios").document(uid).collection("categorias_ingresos")
+
+        categoriasGastos.forEach { nombre ->
+            gastosRef.add(mapOf("nombre" to nombre))
+        }
+        categoriasIngresos.forEach { nombre ->
+            ingresosRef.add(mapOf("nombre" to nombre))
+        }
+    }
 
 
     private fun checkAndShowEmptyMessage(hasIngresos: Boolean, hasGastos: Boolean) {
