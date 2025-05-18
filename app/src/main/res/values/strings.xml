@@ -74,5 +74,6 @@
     <string name="logo_de_la_aplicaci_n">Logo de la aplicación</string>
     <string name="title_activity_menu_ingresos">MenuIngresos</string>
     <string name="agregar">Agregar</string>
+    <string name="ingresa_nuevamente">Ingresa nuevamente</string>
 
 </resources>
