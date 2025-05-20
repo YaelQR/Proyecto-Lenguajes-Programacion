@@ -63,7 +63,7 @@ class ModificarGastosActivity : AppCompatActivity() {
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionesBase)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
-            spinner.setSelection(0)
+            spinner.setSelection(opcionesBase.indexOf(categoria))
         }
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionesBase)
@@ -129,6 +129,8 @@ class ModificarGastosActivity : AppCompatActivity() {
             }
         }
 
+
+        Log.i("Opciones", "$opcionesBase")
         llenarCampos(id, monto, fecha, opcionesBase.indexOf(categoria))
 
         val btnModificarGasto = findViewById<Button>(R.id.ModificarGastoBtn)
@@ -213,9 +215,16 @@ class ModificarGastosActivity : AppCompatActivity() {
         formato.timeZone = TimeZone.getTimeZone("UTC")
         val date = formato.parse(fecha)*/
 
+        Log.i("LlenarCampos", "Llego a llenarCampos")
+
+
         editTextIngreso.setText(monto.toString())
         editTextFecha.setText(fecha)
         spinner.setSelection(categoria)
+
+        Log.i("LlenarCampos", "${spinner.selectedItem}")
+        Log.i("LlenarCampos", "Categoria seleccionada: $categoria")
+
     }
 
     private fun guardarCategoriaPersonalizada(categoria: String) {
