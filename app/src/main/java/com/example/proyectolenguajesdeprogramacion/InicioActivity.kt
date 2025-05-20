@@ -8,6 +8,7 @@ import android.graphics.Color
 import android.view.Gravity
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -57,12 +58,7 @@ class InicioActivity : AppCompatActivity() {
         // Botón cerrar sesión
         val btnCerrarSesion = findViewById<MaterialButton>(R.id.btnCerrarSesion)
         btnCerrarSesion.setOnClickListener {
-            auth.signOut()
-            Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, LogininicialActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
+            cerrarSesion()
         }
 
         val btnGasto = findViewById<MaterialButton>(R.id.GastosBtn)
@@ -89,6 +85,35 @@ class InicioActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        dialogoCerrarSesion()
+    }
+
+    private fun dialogoCerrarSesion(){
+        AlertDialog.Builder(this)
+            .setTitle("¿Deseas cerrar sesión?")
+            .setMessage("Selecciona una opción:")
+            .setPositiveButton("Cerrar sesión") { dialog, _ ->
+                // Aquí haces logout y rediriges al login
+                cerrarSesion()
+            }
+            .setNegativeButton("Cancelar") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    private fun cerrarSesion(){
+        auth.signOut()
+        Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, LogininicialActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 
     private fun cargarMovimientos() {
