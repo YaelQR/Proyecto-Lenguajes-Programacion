@@ -88,21 +88,23 @@ class InicioActivity : AppCompatActivity() {
     }
 
     @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
+    @Suppress("MissingSuperCall")
     override fun onBackPressed() {
-        super.onBackPressed()
         dialogoCerrarSesion()
     }
 
-    private fun dialogoCerrarSesion(){
+    private fun dialogoCerrarSesion() {
         AlertDialog.Builder(this)
-            .setTitle("¿Deseas cerrar sesión?")
+            .setTitle("¿Deseas salir?")
             .setMessage("Selecciona una opción:")
-            .setPositiveButton("Cerrar sesión") { dialog, _ ->
-                // Aquí haces logout y rediriges al login
+            .setPositiveButton("Cerrar sesión") { _, _ ->
                 cerrarSesion()
             }
             .setNegativeButton("Cancelar") { dialog, _ ->
                 dialog.dismiss()
+            }
+            .setNeutralButton("Salir de la app") { _, _ ->
+                finishAffinity() // Cierra todas las actividades y sale de la app
             }
             .show()
     }

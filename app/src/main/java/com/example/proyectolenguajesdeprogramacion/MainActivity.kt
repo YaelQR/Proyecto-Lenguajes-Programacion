@@ -35,17 +35,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            reload()
-        }
-    }
 
-    fun reload() {
-        Toast.makeText(this, "Usuario no inicio sesión", Toast.LENGTH_SHORT).show()
-    }
 
 }
