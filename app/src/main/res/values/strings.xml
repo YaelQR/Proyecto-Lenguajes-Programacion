@@ -79,5 +79,9 @@
     <string name="fecha_de_inicio">Fecha de Inicio</string>
     <string name="resumen_del_periodo">Resumen del periodo</string>
     <string name="selecciona_el_perido_de_analisis">Selecciona el perido de analisis</string>
+    <string name="informaci_n_personal">Información personal</string>
+    <string name="cambiar_foto_de_perfil">Cambiar foto de perfil</string>
+    <string name="historial">Historial</string>
+    <string name="cambiar_contrase_a">Cambiar contraseña</string>
 
 </resources>
