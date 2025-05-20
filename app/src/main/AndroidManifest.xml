@@ -39,6 +39,9 @@
             android:name=".AgregarIngresoActivity"
             android:exported="false" />
         <activity
+            android:name=".MenuEstado"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

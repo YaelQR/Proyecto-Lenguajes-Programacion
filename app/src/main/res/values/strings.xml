@@ -75,5 +75,9 @@
     <string name="title_activity_menu_ingresos">MenuIngresos</string>
     <string name="agregar">Agregar</string>
     <string name="ingresa_nuevamente">Ingresa nuevamente</string>
+    <string name="fecha_de_fin">Fecha de Fin</string>
+    <string name="fecha_de_inicio">Fecha de Inicio</string>
+    <string name="resumen_del_periodo">Resumen del periodo</string>
+    <string name="selecciona_el_perido_de_analisis">Selecciona el perido de analisis</string>
 
 </resources>
