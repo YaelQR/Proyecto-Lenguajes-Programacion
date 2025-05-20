@@ -44,13 +44,12 @@
         android:layout_height="1dp"
         android:layout_marginStart="20dp"
 
-        android:layout_marginTop="80dp"
-
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonReturn" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineF"
@@ -184,8 +183,6 @@
             android:text="Resumen General"
             android:textColor="@color/black"
             android:textSize="@dimen/h1"
-            app:layout_constraintEnd_toStartOf="@+id/imageView6"
-            app:layout_constraintHorizontal_bias="0.009"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
