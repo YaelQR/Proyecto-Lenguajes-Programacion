@@ -48,8 +48,10 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonLogIn"
         android:layout_width="0dp"
-        android:layout_height="62dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="@string/iniciar_sesi_on"
         android:textColor="#FFFFFF"
         android:textSize="@dimen/h2"
@@ -75,8 +77,10 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonRegistro"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="@string/registrarse"
         android:textColor="#FFFFFF"
         android:textSize="@dimen/h2"
