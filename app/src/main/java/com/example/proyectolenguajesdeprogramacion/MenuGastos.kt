@@ -128,6 +128,7 @@ class MenuGastos : AppCompatActivity() {
                     val monto = document.getDouble("monto") ?: continue
                     val categoria = document.getString("categoria") ?: continue
                     val fecha = document.getString("fecha") ?: continue
+                    val gastoId = document.id.toString()
 
                     Log.d("GastoDebug", "Monto: $monto - Fecha: $fecha - Categoria: $categoria")
 
@@ -140,6 +141,8 @@ class MenuGastos : AppCompatActivity() {
                         params.setMargins(0, 0, 0, dpToPx(12)) // margen inferior entre filas
                         layoutParams = params
                     }
+
+                    fila.isClickable = true
 
                     // Crear cada celda
                     val tvMonto = TextView(this).apply {

@@ -47,6 +47,8 @@
     <string name="categoria2">Categoria</string>
     <string name="fecha2">Fecha</string>
     <string name="monto2">Monto</string>
+    <string name="modificar_ingreso">Modificar Ingreso</string>
+    <string name="modificar_gasto">Modificar Gasto</string>"
     <string-array name="categorias">
         <item>Transporte</item>
         <item>Comida</item>

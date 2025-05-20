@@ -167,6 +167,11 @@ class AgregarGastoActivity : AppCompatActivity() {
                 finish() // Esto cierra la actividad actual y regresa a la anterior
             }
         }
+
+        val botonRegresar = findViewById<ImageButton>(R.id.buttonReturn)
+        botonRegresar.setOnClickListener {
+            finish()
+        }
     }
     private fun guardarCategoriaPersonalizada(categoria: String) {
         val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
