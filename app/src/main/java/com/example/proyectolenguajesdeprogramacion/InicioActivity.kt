@@ -77,6 +77,12 @@ class InicioActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val btnEstado = findViewById<MaterialButton>(R.id.EstadoBtn)
+        btnEstado.setOnClickListener {
+            val intent = Intent(this, MenuEstado::class.java)
+            startActivity(intent)
+        }
+
         // Ajustar padding para barras del sistema
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
