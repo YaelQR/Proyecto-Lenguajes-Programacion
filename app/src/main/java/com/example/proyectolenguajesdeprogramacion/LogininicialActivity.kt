@@ -55,6 +55,19 @@ class LogininicialActivity : AppCompatActivity() {
         val buttonLogin = findViewById<Button>(R.id.buttonLogIn)
         buttonLogin.setOnClickListener {
 
+            val email = textAreaEmail.text.toString().trim()
+            val password = textAreaPassword.text.toString().trim()
+
+            if (TextUtils.isEmpty(email)) {
+                textAreaEmail.error = "Introduce tu correo"
+                return@setOnClickListener
+            }
+
+            if (TextUtils.isEmpty(password)) {
+                textAreaPassword.error = "Introduce tu contraseña"
+                return@setOnClickListener
+            }
+
             login(textAreaEmail.text.toString(), textAreaPassword.text.toString())
             Log.i("LoginScreen", "El usuario actual es: "+auth.currentUser.toString())
             Log.i("LoginScreen", "El id es ${auth.currentUser?.uid.toString()}")
