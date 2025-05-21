@@ -97,33 +97,39 @@ class LogininicialActivity : AppCompatActivity() {
     }
 
     private fun login(email: String, password: String) {
+        Log.d("LoginScreen", "email: $email")
 
-        Log.d("LoginScreen","email: $email")
-
-        if(!validateData(email,password)){
+        if (!validateData(email, password)) {
             Toast.makeText(this, "No se puede iniciar sesión debido a errores en los campos", Toast.LENGTH_SHORT).show()
+            return
         }
 
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d("LoginScreen", "signInWithEmail:success")
                     val user = auth.currentUser
-                    //updateUI(user)
+                    if (user != null && user.isEmailVerified) {
+                        Log.d("LoginScreen", "signInWithEmail:success y verificado")
+                        startActivity(Intent(this, InicioActivity::class.java))
+                        finish()
+                    } else if (user != null && !user.isEmailVerified) {
+                        user.sendEmailVerification()
+                            .addOnCompleteListener { sendTask ->
+                                if (sendTask.isSuccessful) {
+                                    Toast.makeText(this, "Correo de verificación reenviado. Revisa tu bandeja de entrada.", Toast.LENGTH_LONG).show()
+                                } else {
+                                    Toast.makeText(this, "Error al reenviar verificación: ${sendTask.exception?.message}", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        auth.signOut()
+                    }
                 } else {
-                    // If sign in fails, display a message to the user.
                     Log.w("LoginScreen", "signInWithEmail:failure", task.exception)
-                    Toast.makeText(
-                        baseContext,
-                        "Authentication failed.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                    //updateUI(null)
+                    Toast.makeText(this, "Error al iniciar sesión: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
-
     }
+
 
     private fun validateData(email: String, password: String): Boolean {
 

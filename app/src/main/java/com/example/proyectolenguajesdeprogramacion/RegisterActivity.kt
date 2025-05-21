@@ -66,6 +66,15 @@ class RegisterActivity : AppCompatActivity() {
                 val user = auth.currentUser
                 val uid = user?.uid ?: return@addOnCompleteListener
 
+                user.sendEmailVerification()
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            Toast.makeText(this, "Correo de verificación enviado", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this, "Error al enviar correo de verificación", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
                 val db = FirebaseFirestore.getInstance()
                 val userMap = hashMapOf(
                     "email" to email,
@@ -78,10 +87,12 @@ class RegisterActivity : AppCompatActivity() {
                 db.collection("usuarios").document(uid)
                     .set(userMap)
                     .addOnSuccessListener {
-                        guardarCategoriasPorDefecto(uid) // ✅ aquí
+                        guardarCategoriasPorDefecto(uid)
 
-                        Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, InicioActivity::class.java))
+                        Toast.makeText(this, "Usuario registrado correctamente. Verifica tu correo antes de iniciar sesión.", Toast.LENGTH_LONG).show()
+
+                        auth.signOut() // 🔐
+                        startActivity(Intent(this, LogininicialActivity::class.java)) // 🔁 Volver a la pantalla de login
                         finish()
                     }
                     .addOnFailureListener { e ->
