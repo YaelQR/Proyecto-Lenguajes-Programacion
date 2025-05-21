@@ -127,6 +127,7 @@ class MenuIngresos : AppCompatActivity() {
                     val monto = document.getDouble("monto") ?: continue
                     val categoria = document.getString("categoria") ?: continue
                     val fecha = document.getString("fecha") ?: continue
+                    val gastoId = document.id.toString()
 
                     Log.d("IngresoDebug", "Monto: $monto - Fecha: $fecha - Categoria: $categoria")
 
@@ -139,6 +140,8 @@ class MenuIngresos : AppCompatActivity() {
                         params.setMargins(0, 0, 0, dpToPx(12)) // margen inferior entre filas
                         layoutParams = params
                     }
+
+                    fila.isClickable = true
 
                     // Crear cada celda
                     val tvMonto = TextView(this).apply {
@@ -167,6 +170,16 @@ class MenuIngresos : AppCompatActivity() {
                     fila.addView(tvFecha)
                     fila.addView(tvCategoria)
 
+                    fila.setOnClickListener {
+
+                        if(gastoId.isNotEmpty()){
+                            mostrardialogoOpciones(gastoId, monto, fecha, categoria)
+                        }else{
+                            Toast.makeText(this, "Error al cargar los datos del gasto", Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
+
                     // Agregar fila a la tabla
                     tabla.addView(fila)
                 }
@@ -179,6 +192,65 @@ class MenuIngresos : AppCompatActivity() {
     private fun dpToPx(dp: Int): Int {
         val scale = resources.displayMetrics.density
         return (dp * scale + 0.5f).toInt()
+    }
+
+    private fun mostrardialogoOpciones(gastoID: String, monto: Double, fecha: String, categoria: String){
+        val opciones = arrayOf("¿Qué deseas hacer con el ingreso de $monto en $fecha de la categoría $categoria?","Modificar", "Eliminar")
+
+        AlertDialog.Builder(this)
+            .setTitle("Selecciona una opción")
+            //.setMessage("¿Qué deseas hacer con el gasto de $monto en $fecha de la categoría $categoria?")
+            .setItems(opciones) { _, which ->
+                when (which) {
+                    1 -> { // Modificar Gasto
+
+                        val intent = Intent(this, ModificarIngresos::class.java)
+                        // Pasar el ID del gasto y los datos actuales a la Activity de modificación
+
+                        intent.putExtra("id", gastoID)
+                        intent.putExtra("monto", monto)
+                        intent.putExtra("fecha", fecha)
+                        intent.putExtra("categoria", categoria)
+
+                        startActivity(intent)
+                    }
+
+                    2 -> { // Eliminar Gasto
+                        confirmarEliminacion(gastoID, monto, fecha, categoria)
+                    }
+                }
+            }
+            .show()
+    }
+
+    private fun confirmarEliminacion(gastoID: String, monto: Double, fecha: String, categoria: String) {
+        AlertDialog.Builder(this)
+            .setTitle("Confirmar Eliminación")
+            .setMessage("¿Estás seguro de que deseas eliminar el ingreso de $monto en $fecha de la categoría $categoria? Esta acción no se puede deshacer.")
+            .setPositiveButton("Eliminar") { dialog, _ ->
+                eliminarGastoDeFirestore(gastoID)
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancelar") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    private fun eliminarGastoDeFirestore(gastoID: String) {
+
+        val db = FirebaseFirestore.getInstance()
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
+
+        db.collection("usuarios").document(uid).collection("ingresos").document(gastoID)
+            .delete()
+            .addOnSuccessListener {
+                Toast.makeText(this, "Gasto eliminado con éxito", Toast.LENGTH_SHORT).show()
+                cargarIngresos()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Error al eliminar el gasto", Toast.LENGTH_SHORT).show()
+            }
     }
 
 }
