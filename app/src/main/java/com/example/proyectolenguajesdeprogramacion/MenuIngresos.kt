@@ -245,11 +245,11 @@ class MenuIngresos : AppCompatActivity() {
         db.collection("usuarios").document(uid).collection("ingresos").document(gastoID)
             .delete()
             .addOnSuccessListener {
-                Toast.makeText(this, "Gasto eliminado con éxito", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Ingreso eliminado con éxito", Toast.LENGTH_SHORT).show()
                 cargarIngresos()
             }
             .addOnFailureListener {
-                Toast.makeText(this, "Error al eliminar el gasto", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Error al eliminar el ingreso", Toast.LENGTH_SHORT).show()
             }
     }
 
