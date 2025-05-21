@@ -55,7 +55,7 @@ Una vez clonado, Android Studio abrirá el proyecto automáticamente.
 
 También puedes hacerlo desde el menú:
 
-File > Sync Project with Gradle Files
+`File > Sync Project with Gradle Files`
 
 ![image](https://github.com/user-attachments/assets/d01aba54-5317-4ea8-aa68-9ef89bf850f7)
 
@@ -68,6 +68,21 @@ Espera a que sincronice con Gradle y asegúrate de que el entorno esté correcta
 
 - Conecta un dispositivo Android (Este debe tener la depuracion por usb activada) o inicia un emulador.
 - Haz clic en **Run ▶️** o presiona `Shift + F10`.
+
+#### 🔓 Activar la depuración USB en Android
+
+Para poder ejecutar la app directamente en tu dispositivo desde Android Studio, necesitas activar la opción de **Depuración por USB**.
+
+Sigue estos pasos:
+
+1. Ve a `Ajustes > Acerca del teléfono`.
+2. Busca la opción **"Número de compilación"** (*Build number*) y tócala 7 veces hasta que aparezca el mensaje **“¡Ahora eres desarrollador!”**.
+3. Regresa a `Ajustes` y entra a la nueva opción **"Opciones de desarrollador"**.
+4. Activa la opción **"Depuración por USB"**.
+5. Conecta tu dispositivo al computador mediante cable USB y acepta la ventana de autorización si aparece.
+
+> ✅ Ahora tu dispositivo está listo para recibir la app directamente desde Android Studio.
+
 
 > ✅ La app debería compilarse y ejecutarse en tu dispositivo/emulador.
 
@@ -98,7 +113,7 @@ Asegúrate de tener el proyecto abierto y correctamente sincronizado con Gradle.
 
 ### 2. Acceder al menú de compilación
 
-En la barra superior de Android Studio, ve a: Build > Build Bundle(s) / APK(s) > Build APK(s)
+En la barra superior de Android Studio, ve a: `Build > Build Bundle(s) / APK(s) > Build APK(s)`
 
 ![image](https://github.com/user-attachments/assets/8681033c-f8ae-46b7-bd9e-cd58445ac198)
 
@@ -112,7 +127,7 @@ Haz clic en **“locate”** para abrir directamente la carpeta donde se encuent
 
 ### 4. Ubicación del archivo APK
 
-Por defecto, el APK se guarda en: Proyecto-Lenguajes-Programacion/app/build/outputs/apk/debug/app-debug.apk
+Por defecto, el APK se guarda en: `Proyecto-Lenguajes-Programacion/app/build/outputs/apk/debug/app-debug.apk`
 
 ![image](https://github.com/user-attachments/assets/22f7edac-a7ae-4562-93c4-e8b74fd5e249)
 
