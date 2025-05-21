@@ -145,8 +145,8 @@ class ModificarIngresos : AppCompatActivity() {
             val categoriaSeleccionada = spinner.selectedItem.toString()
 
             // Validación
-            if (monto == null || monto <= 0.0) {
-                editTextIngreso.error = "Ingresa un monto válido"
+            if (monto == null || monto <= 0.0 || valMonto(monto)) {
+                editTextIngreso.error = "Ingresa un monto válido. Debe ser menor a 100,000"
                 return@setOnClickListener
             }
 
@@ -172,17 +172,18 @@ class ModificarIngresos : AppCompatActivity() {
             val db = FirebaseFirestore.getInstance()
             db.collection("usuarios")
                 .document(uid)
-                .collection("gastos")
-                .add(gasto)
+                .collection("ingresos")
+                .document(id)
+                .update(gasto)
                 .addOnSuccessListener {
-                    Toast.makeText(this, "Gasto guardado con éxito", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Ingreso modificado con éxito", Toast.LENGTH_SHORT).show()
                     finish() // Opcional: cerrar pantalla
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(this, "Error al guardar: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
 
-            db.collection("usuarios").document(uid).collection("gastos").document(id).update(gasto)
+            db.collection("usuarios").document(uid).collection("ingresos").document(id).update(gasto)
                 .addOnSuccessListener {
                     Log.d("Firestore", "Documento actualizado exitosamente")
                     Toast.makeText(this, "Gasto actualizado con éxito", Toast.LENGTH_SHORT).show()
@@ -244,4 +245,9 @@ class ModificarIngresos : AppCompatActivity() {
         }
         return super.dispatchTouchEvent(ev)
     }
+
+    private fun valMonto(monto: Double): Boolean {
+        return (monto > 100000)
+    }
+
 }
