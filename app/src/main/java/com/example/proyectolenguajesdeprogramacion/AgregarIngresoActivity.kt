@@ -126,8 +126,8 @@ class AgregarIngresoActivity : AppCompatActivity() {
             val monto = editTextIngreso.text.toString().toDoubleOrNull()
             val fecha = editTextFecha.text.toString()
 
-            if (monto == null || monto <= 0.0) {
-                editTextIngreso.error = "Ingresa un monto válido"
+            if (monto == null || monto <= 0.0 || valMonto(monto) ) {
+                editTextIngreso.error = "Ingresa un monto válido. Debe ser menor a 100,000"
                 return@setOnClickListener
             }
 
@@ -177,4 +177,9 @@ class AgregarIngresoActivity : AppCompatActivity() {
         }
         return super.dispatchTouchEvent(ev)
     }
+
+    private fun valMonto(monto: Double): Boolean {
+        return (monto > 100000)
+    }
+
 }

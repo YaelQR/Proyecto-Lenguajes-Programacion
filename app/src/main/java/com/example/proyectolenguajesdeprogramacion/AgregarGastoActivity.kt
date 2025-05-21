@@ -50,8 +50,8 @@ class AgregarGastoActivity : AppCompatActivity() {
             spinner.setSelection(0)
         }
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionesBase)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapter = ArrayAdapter(this, R.layout.spinner_item, opcionesBase)
+        adapter.setDropDownViewResource(R.layout.spinner_item)
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
@@ -125,8 +125,8 @@ class AgregarGastoActivity : AppCompatActivity() {
             val categoriaSeleccionada = spinner.selectedItem.toString()
 
             // Validación
-            if (monto == null || monto <= 0.0) {
-                editTextIngreso.error = "Ingresa un monto válido"
+            if (monto == null || monto <= 0.0 || valMonto(monto)) {
+                editTextIngreso.error = "Ingresa un monto válido. Debe ser menor a 100,000"
                 return@setOnClickListener
             }
 
@@ -189,5 +189,9 @@ class AgregarGastoActivity : AppCompatActivity() {
             currentFocus!!.clearFocus()
         }
         return super.dispatchTouchEvent(ev)
+    }
+
+    private fun valMonto(monto: Double): Boolean {
+        return (monto > 100000)
     }
 }
