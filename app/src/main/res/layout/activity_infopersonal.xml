@@ -138,60 +138,61 @@
 
         <TextView
             android:id="@+id/titulo"
-            android:layout_width="362dp"
-            android:layout_height="38dp"
+            android:layout_width="360dp"
+            android:layout_height="54dp"
             android:layout_marginTop="152dp"
             android:text="Aquí puedes consultar tus datos personales registrados en la aplicación."
+            android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.636"
+            app:layout_constraintHorizontal_bias="0.485"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvNombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="281dp"
+            android:layout_height="28dp"
             android:text="Nombre:"
             android:textColor="#000000"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tvCorreo"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.168"
+            app:layout_constraintHorizontal_bias="0.458"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titulo"
-            app:layout_constraintVertical_bias="0.526" />
+            app:layout_constraintVertical_bias="0.546" />
 
         <TextView
             android:id="@+id/tvCorreo"
-            android:layout_width="55dp"
-            android:layout_height="19dp"
+            android:layout_width="281dp"
+            android:layout_height="25dp"
             android:text="Correo:"
             android:textColor="#000000"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tvTel"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.161"
+            app:layout_constraintHorizontal_bias="0.433"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titulo"
-            app:layout_constraintVertical_bias="0.721" />
+            app:layout_constraintVertical_bias="0.719" />
 
         <TextView
             android:id="@+id/tvTel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="281dp"
+            android:layout_height="30dp"
             android:layout_marginTop="256dp"
             android:text="Teléfono:"
             android:textColor="#000000"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/divider2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.151"
+            app:layout_constraintHorizontal_bias="0.482"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titulo"
-            app:layout_constraintVertical_bias="0.03" />
+            app:layout_constraintVertical_bias="0.018" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
