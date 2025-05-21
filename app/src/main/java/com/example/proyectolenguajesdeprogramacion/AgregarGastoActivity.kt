@@ -92,17 +92,22 @@ class AgregarGastoActivity : AppCompatActivity() {
 
         val editTextFecha = findViewById<EditText>(R.id.edittext_date)
 
-        // Establece la fecha actual por defecto
+        // Establece la fecha actual
         val fechaActual = Calendar.getInstance().time
         val formato = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        formato.timeZone = TimeZone.getTimeZone("UTC")
         editTextFecha.setText(formato.format(fechaActual))
 
-        // Abre el selector al hacer clic
         editTextFecha.setOnClickListener {
+            val calendar = Calendar.getInstance().apply {
+                set(Calendar.HOUR_OF_DAY, 0)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+
             val datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Selecciona una fecha")
-                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .setSelection(calendar.timeInMillis) //
                 .build()
 
             datePicker.show(supportFragmentManager, "selector_fecha")
@@ -112,6 +117,7 @@ class AgregarGastoActivity : AppCompatActivity() {
                 editTextFecha.setText(fechaElegida)
             }
         }
+
 
         val btnAgregarGasto = findViewById<Button>(R.id.AgregarGastoBtn)
 
