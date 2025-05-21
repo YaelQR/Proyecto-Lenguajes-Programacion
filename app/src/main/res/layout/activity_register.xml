@@ -36,8 +36,8 @@
 
     <View
         android:id="@+id/cuadroBlanco3"
-        android:layout_width="307dp"
-        android:layout_height="410dp"
+        android:layout_width="303dp"
+        android:layout_height="401dp"
         android:layout_marginTop="280dp"
         android:background="@drawable/redondeado"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,113 +60,91 @@
         app:srcCompat="@drawable/logo" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button2"
+        android:id="@+id/buttonRegistro"
         android:layout_width="172dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="128dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/registrarse"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:backgroundTint="#2567E8"
         app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cuadroBlanco3"
-        app:layout_constraintVertical_bias="0.625" />
-
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="250dp"
-        android:layout_height="57dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="text"
-        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
         app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3"
-        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco3"
-        app:layout_constraintVertical_bias="0.376" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3" />
 
     <EditText
-        android:id="@+id/editTextText2"
-        android:layout_width="250dp"
-        android:layout_height="57dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/num"
-        android:inputType="text"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
-        app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3"
-        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco3"
-        app:layout_constraintVertical_bias="0.753" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/emailRegister"
         android:layout_width="250dp"
         android:layout_height="57dp"
         android:layout_marginBottom="16dp"
         android:autofillHints=""
         android:ems="10"
+        android:hint="@string/email"
+        android:inputType="text"
+        android:textColor="@android:color/black"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/txtTelefono"
+        app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3" />
+
+    <EditText
+        android:id="@+id/pswdRegister"
+        android:layout_width="250dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="32dp"
+        android:autofillHints=""
+        android:ems="10"
         android:hint="@string/contrase_a"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegistro"
         app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3" />
 
     <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="250dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="13dp"
-        android:autofillHints=""
+        android:id="@+id/txtTelefono"
+        android:layout_width="249dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
-        android:hint="@string/fecha_de_nacimiento"
-        android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText2"
+        android:hint="Teléfono "
+        android:inputType="phone"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/pswdRegister"
         app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText"
-        app:layout_constraintVertical_bias="0.166" />
+        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/txtNombre"
         android:layout_width="115dp"
-        android:layout_height="57dp"
-        android:autofillHints=""
+        android:layout_height="47dp"
         android:ems="10"
+        android:hint="Nombre"
         android:inputType="text"
-        android:hint="@string/nombre"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText4"
-        app:layout_constraintHorizontal_bias="0.682"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/emailRegister"
+        app:layout_constraintEnd_toStartOf="@+id/txtApellido"
+        app:layout_constraintHorizontal_bias="0.59"
         app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3"
         app:layout_constraintTop_toTopOf="@+id/cuadroBlanco3"
-        app:layout_constraintVertical_bias="0.802" />
+        app:layout_constraintVertical_bias="0.745" />
 
     <EditText
-        android:id="@+id/editTextText4"
-        android:layout_width="124dp"
-        android:layout_height="56dp"
-        android:autofillHints="" android:ems="10"
+        android:id="@+id/txtApellido"
+        android:layout_width="115dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="28dp"
+        android:ems="10"
+        android:hint="Apellido"
         android:inputType="text"
-        android:hint="@string/apellidos"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/emailRegister"
         app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
-        app:layout_constraintHorizontal_bias="0.852"
-        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3"
         app:layout_constraintTop_toTopOf="@+id/cuadroBlanco3"
-        app:layout_constraintVertical_bias="0.818" />
+        app:layout_constraintVertical_bias="0.739" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,14 +36,29 @@
 
     <View
         android:id="@+id/cuadroBlanco3"
-        android:layout_width="307dp"
-        android:layout_height="410dp"
+        android:layout_width="313dp"
+        android:layout_height="367dp"
         android:layout_marginTop="280dp"
         android:background="@drawable/redondeado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRecuperar"
+        android:layout_width="172dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="48dp"
+        android:text="Recuperar"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:backgroundTint="#2567E8"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
+        app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -59,95 +74,31 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/logo" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button2"
-        android:layout_width="172dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="128dp"
-        android:text="Recuperar"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:backgroundTint="#2567E8"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cuadroBlanco3" />
-
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/emailInput"
         android:layout_width="250dp"
         android:layout_height="57dp"
+        android:layout_marginBottom="56dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/email"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
+        app:layout_constraintBottom_toTopOf="@+id/btnRecuperar"
         app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3"
-        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco3"
-        app:layout_constraintVertical_bias="0.277" />
-
-    <EditText
-        android:id="@+id/editTextText2"
-        android:layout_width="250dp"
-        android:layout_height="57dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/num"
-        android:inputType="text"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
-        app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3"
-        app:layout_constraintTop_toTopOf="@+id/cuadroBlanco3"
-        app:layout_constraintVertical_bias="0.478" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword2"
-        android:layout_width="250dp"
-        android:layout_height="57dp"
-        android:layout_marginBottom="16dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/contrase_a"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
-        app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2"
-        app:layout_constraintVertical_bias="0.072" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="250dp"
-        android:layout_height="57dp"
-        android:layout_marginBottom="16dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/contrase_a_nueva"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="@+id/cuadroBlanco3"
-        app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2"
-        app:layout_constraintVertical_bias="0.655" />
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="275dp"
+        android:layout_height="74dp"
         android:layout_marginBottom="35dp"
         android:text="@string/ingresa_la_informacion_requerida"
-        android:textSize="16sp"
+        android:textAlignment="center"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText"
+        app:layout_constraintBottom_toTopOf="@+id/emailInput"
         app:layout_constraintEnd_toEndOf="@+id/cuadroBlanco3"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="@+id/cuadroBlanco3"

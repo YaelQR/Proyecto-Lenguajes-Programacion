@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="botonFiltro">#FFFFFFFF</color>
+    <color name="dividers_dark">#FF7E7E7E</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="border_box">#4B4B4B</color>
+    <color name="background_box">#FFFFFF</color>
+
+    <color name="primary_blue">#2196F3</color>
+
 </resources>

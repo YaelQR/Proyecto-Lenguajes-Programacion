@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Proyecto Lenguajes de Programacion</string>
+    <string name="app_name">Finanzi</string>
     <string name="inicia_sesi_n_en_tu_cuenta">Inicia sesión en tu cuenta</string>
     <string name="iniciar_sesi_n">Iniciar Sesión</string>
     <string name="todo">TODO</string>
@@ -24,7 +24,9 @@
     <string name="mxm">MXM</string>
     <string name="_550_00">$ 550.00</string>
     <string name="gastos">Gastos</string>
+    <string name="historial_gastos">Historial de gastos</string>
     <string name="ingresos">Ingresos</string>
+    <string name="historial_ingresos">Historial de ingresos</string>
     <string name="estado">Estado</string>
     <string name="mi_perfil"><![CDATA[Mi perfil >>]]></string>
     <string name="_350_00">$350.00</string>
@@ -45,10 +47,47 @@
     <string name="categoria2">Categoria</string>
     <string name="fecha2">Fecha</string>
     <string name="monto2">Monto</string>
+    <string name="modificar_ingreso">Modificar Ingreso</string>
+    <string name="modificar_gasto">Modificar Gasto</string>"
     <string-array name="categorias">
         <item>Transporte</item>
         <item>Comida</item>
         <item>Servicios</item>
         <item>Entretenimiento</item>
     </string-array>
+    <string-array name="categorias_ingresos">
+        <item>Salario</item>
+        <item>Ventas</item>
+        <item>Rentas</item>
+        <item>Regalos</item>
+        <item>Reembolsos</item>
+        <item>Premios</item>
+        <item>Otro ingreso</item>
+    </string-array>
+    <string name="filtrar">Filtrar</string>
+    <string name="mostrarhistorial">Se muestra el historial de gastos del usuario</string>
+
+    <string name="boton_regresar">Regresar a la pantalla anterior</string>
+    <string name="cerrar_sesi_n">Cerrar Sesión</string>
+    <string name="welcome_message">Bienvenido a tu aplicación de finanzas</string>
+    <string name="button_start">Comenzar</string>
+    <string name="app_logo">Logo de la aplicación</string>
+    <string name="bienvenido_a_tu_aplicaci_n_de_finanzas">Bienvenido a tu aplicación de finanzas</string>
+    <string name="logo_de_la_aplicaci_n">Logo de la aplicación</string>
+    <string name="title_activity_menu_ingresos">MenuIngresos</string>
+    <string name="agregar">Agregar</string>
+    <string name="ingresa_nuevamente">Ingresa nuevamente</string>
+    <string name="fecha_de_fin">Fecha de Fin</string>
+    <string name="fecha_de_inicio">Fecha de Inicio</string>
+    <string name="resumen_del_periodo">Resumen del periodo</string>
+    <string name="selecciona_el_perido_de_analisis">Selecciona el perido de analisis</string>
+    <string name="informaci_n_personal">Información personal</string>
+    <string name="cambiar_foto_de_perfil">Cambiar foto de perfil</string>
+    <string name="historial">Historial</string>
+    <string name="cambiar_contrase_a">Cambiar contraseña</string>
+    <string name="nueva_contrase_a">Nueva contraseña</string>
+    <string name="confirmar_nueva_contrase_a">Confirmar nueva contraseña</string>
+    <string name="su_contrase_a_actual">Su contraseña actual</string>
+    <string name="actualizar">Actualizar</string>
+
 </resources>

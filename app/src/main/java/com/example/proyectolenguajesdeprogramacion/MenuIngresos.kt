@@ -1,0 +1,256 @@
+package com.example.proyectolenguajesdeprogramacion
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.Gravity
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.TableLayout
+import android.widget.TableRow
+import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import android.graphics.Color
+import android.util.Log
+import androidx.appcompat.app.AlertDialog
+import com.google.android.material.button.MaterialButton
+import androidx.core.content.edit
+
+class MenuIngresos : AppCompatActivity() {
+
+    override fun onResume() {
+        super.onResume()
+        val ordenGuardado = getSharedPreferences("config", MODE_PRIVATE)
+            .getString("orden_gastos", "fecha_desc") ?: "fecha_desc"
+        cargarIngresos(ordenGuardado)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_menu_ingresos)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        val buttonAgregar = findViewById<Button>(R.id.AgregarIngresoBtn)
+        buttonAgregar.setOnClickListener {
+            val intent = Intent(this, AgregarIngresoActivity::class.java)
+            startActivity(intent)
+        }
+
+        val botonRegresar = findViewById<ImageButton>(R.id.buttonReturn)
+        botonRegresar.setOnClickListener {
+            finish()
+        }
+
+        findViewById<MaterialButton>(R.id.button_sort).setOnClickListener {
+            val opciones = arrayOf(
+                "Monto (menor a mayor)",
+                "Monto (mayor a menor)",
+                "Fecha (más reciente)",
+                "Fecha (más antigua)",
+                "Categoría (A-Z)"
+            )
+            val valoresOrden = arrayOf(
+                "monto_asc",
+                "monto_desc",
+                "fecha_desc",
+                "fecha_asc",
+                "categoria_asc"
+            )
+
+            AlertDialog.Builder(this)
+                .setTitle("Ordenar por")
+                .setItems(opciones) { _, which ->
+                    val orden = valoresOrden[which]
+
+                    val prefs = getSharedPreferences("config", MODE_PRIVATE)
+                    prefs.edit() { putString("orden_gastos", orden) }
+
+                    cargarIngresos(orden)
+                }
+                .setNegativeButton("Cancelar", null)
+                .show()
+        }
+    }
+
+    private fun cargarIngresos(orden: String = "fecha_desc") {
+        val db = FirebaseFirestore.getInstance()
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val tabla = findViewById<TableLayout>(R.id.tableLayout)
+
+        for (i in tabla.childCount - 1 downTo 0) {
+            tabla.removeViewAt(i)
+        }
+
+        val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+        db.collection("usuarios").document(uid).collection("ingresos")
+            .get()
+            .addOnSuccessListener { snapshot ->
+                val listaOrdenada = when (orden) {
+                    "monto_asc" -> snapshot.documents.sortedBy { it.getDouble("monto") ?: 0.0 }
+                    "monto_desc" -> snapshot.documents.sortedByDescending { it.getDouble("monto") ?: 0.0 }
+                    "fecha_asc" -> snapshot.documents.sortedBy {
+                        try {
+                            formatoFecha.parse(it.getString("fecha") ?: "") ?: Date(0)
+                        } catch (e: Exception) {
+                            Date(0)
+                        }
+                    }
+
+                    "fecha_desc" -> snapshot.documents.sortedByDescending {
+                        try {
+                            formatoFecha.parse(it.getString("fecha") ?: "") ?: Date(0)
+                        } catch (e: Exception) {
+                            Date(0)
+                        }
+                    }
+
+                    "categoria_asc" -> snapshot.documents.sortedBy { it.getString("categoria") ?: "" }
+                    else -> snapshot.documents
+                }
+
+                for (document in listaOrdenada) {
+                    val monto = document.getDouble("monto") ?: continue
+                    val categoria = document.getString("categoria") ?: continue
+                    val fecha = document.getString("fecha") ?: continue
+                    val gastoId = document.id.toString()
+
+                    Log.d("IngresoDebug", "Monto: $monto - Fecha: $fecha - Categoria: $categoria")
+
+                    // Crear nueva fila
+                    val fila = TableRow(this).apply {
+                        val params = TableLayout.LayoutParams(
+                            TableLayout.LayoutParams.MATCH_PARENT,
+                            TableLayout.LayoutParams.WRAP_CONTENT
+                        )
+                        params.setMargins(0, 0, 0, dpToPx(12)) // margen inferior entre filas
+                        layoutParams = params
+                    }
+
+                    fila.isClickable = true
+
+                    // Crear cada celda
+                    val tvMonto = TextView(this).apply {
+                        text = "$${"%.2f".format(monto)}"
+                        gravity = Gravity.CENTER
+                        textSize = 14f
+                        setTextColor(Color.BLACK)
+                    }
+
+                    val tvFecha = TextView(this).apply {
+                        text = fecha
+                        gravity = Gravity.CENTER
+                        textSize = 14f
+                        setTextColor(Color.BLACK)
+                    }
+
+                    val tvCategoria = TextView(this).apply {
+                        text = categoria
+                        gravity = Gravity.CENTER
+                        textSize = 14f
+                        setTextColor(Color.BLACK)
+                    }
+
+                    // Agregar celdas a la fila
+                    fila.addView(tvMonto)
+                    fila.addView(tvFecha)
+                    fila.addView(tvCategoria)
+
+                    fila.setOnClickListener {
+
+                        if(gastoId.isNotEmpty()){
+                            mostrardialogoOpciones(gastoId, monto, fecha, categoria)
+                        }else{
+                            Toast.makeText(this, "Error al cargar los datos del gasto", Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
+
+                    // Agregar fila a la tabla
+                    tabla.addView(fila)
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Error al cargar ingresos", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun dpToPx(dp: Int): Int {
+        val scale = resources.displayMetrics.density
+        return (dp * scale + 0.5f).toInt()
+    }
+
+    private fun mostrardialogoOpciones(gastoID: String, monto: Double, fecha: String, categoria: String){
+        val opciones = arrayOf("¿Qué deseas hacer con el ingreso de $monto en $fecha de la categoría $categoria?","Modificar", "Eliminar")
+
+        AlertDialog.Builder(this)
+            .setTitle("Selecciona una opción")
+            //.setMessage("¿Qué deseas hacer con el gasto de $monto en $fecha de la categoría $categoria?")
+            .setItems(opciones) { _, which ->
+                when (which) {
+                    1 -> { // Modificar Gasto
+
+                        val intent = Intent(this, ModificarIngresos::class.java)
+                        // Pasar el ID del gasto y los datos actuales a la Activity de modificación
+
+                        intent.putExtra("id", gastoID)
+                        intent.putExtra("monto", monto)
+                        intent.putExtra("fecha", fecha)
+                        intent.putExtra("categoria", categoria)
+
+                        startActivity(intent)
+                    }
+
+                    2 -> { // Eliminar Gasto
+                        confirmarEliminacion(gastoID, monto, fecha, categoria)
+                    }
+                }
+            }
+            .show()
+    }
+
+    private fun confirmarEliminacion(gastoID: String, monto: Double, fecha: String, categoria: String) {
+        AlertDialog.Builder(this)
+            .setTitle("Confirmar Eliminación")
+            .setMessage("¿Estás seguro de que deseas eliminar el ingreso de $monto en $fecha de la categoría $categoria? Esta acción no se puede deshacer.")
+            .setPositiveButton("Eliminar") { dialog, _ ->
+                eliminarGastoDeFirestore(gastoID)
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancelar") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    private fun eliminarGastoDeFirestore(gastoID: String) {
+
+        val db = FirebaseFirestore.getInstance()
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
+
+        db.collection("usuarios").document(uid).collection("ingresos").document(gastoID)
+            .delete()
+            .addOnSuccessListener {
+                Toast.makeText(this, "Ingreso eliminado con éxito", Toast.LENGTH_SHORT).show()
+                cargarIngresos()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Error al eliminar el ingreso", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+}
