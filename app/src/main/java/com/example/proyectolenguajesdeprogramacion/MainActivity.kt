@@ -10,6 +10,7 @@ import android.widget.Button
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         auth = FirebaseAuth.getInstance()
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)

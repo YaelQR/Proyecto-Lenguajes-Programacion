@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 
 class AgregarGastoActivity : AppCompatActivity() {
     private var ignorarSeleccion = false
@@ -27,7 +28,6 @@ class AgregarGastoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_agregargasto)
-
 
         val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
         val db = FirebaseFirestore.getInstance()
