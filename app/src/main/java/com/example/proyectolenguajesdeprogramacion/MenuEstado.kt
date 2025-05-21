@@ -35,6 +35,13 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.components.XAxis
 import java.util.Date
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.CompositeDateValidator
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.DateValidatorPointForward
+import com.google.android.material.datepicker.MaterialDatePicker
+
+
 
 
 class MenuEstado : AppCompatActivity() {
@@ -130,6 +137,70 @@ class MenuEstado : AppCompatActivity() {
 
         actualizarBotones()
         cargarDatosDeFirestore()
+
+        fecha1EditText.setOnClickListener {
+            if (fechaMin == null || fechaMax == null) {
+                Toast.makeText(this, "Carga primero los datos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val constraints = CalendarConstraints.Builder()
+                .setValidator(
+                    CompositeDateValidator.allOf(
+                        listOf(
+                            DateValidatorPointForward.from(fechaMin!!.time),
+                            DateValidatorPointBackward.before(fechaMax!!.time)
+                        )
+                    )
+                )
+                .build()
+
+            val picker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Selecciona fecha de inicio")
+                .setSelection(fechaMin!!.time)
+                .setCalendarConstraints(constraints)
+                .build()
+
+            picker.show(supportFragmentManager, "fecha_inicio")
+
+            picker.addOnPositiveButtonClickListener { millis ->
+                val fecha = formatoFecha.format(Date(millis))
+                fecha1EditText.text = fecha
+            }
+        }
+
+        fecha2EditText.setOnClickListener {
+            if (fechaMin == null || fechaMax == null) {
+                Toast.makeText(this, "Carga primero los datos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val constraints = CalendarConstraints.Builder()
+                .setValidator(
+                    CompositeDateValidator.allOf(
+                        listOf(
+                            DateValidatorPointForward.from(fechaMin!!.time),
+                            DateValidatorPointBackward.before(fechaMax!!.time)
+                        )
+                    )
+                )
+                .build()
+
+
+            val picker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Selecciona fecha de fin")
+                .setSelection(fechaMax!!.time)
+                .setCalendarConstraints(constraints)
+                .build()
+
+            picker.show(supportFragmentManager, "fecha_fin")
+
+            picker.addOnPositiveButtonClickListener { millis ->
+                val fecha = formatoFecha.format(Date(millis))
+                fecha2EditText.text = fecha
+            }
+        }
+
     }
 
     private fun actualizarFechasYGraficos() {
@@ -445,8 +516,5 @@ class MenuEstado : AppCompatActivity() {
         return super.dispatchTouchEvent(ev)
     }
 
-    private fun dpToPx(dp: Int): Int {
-        val scale = resources.displayMetrics.density
-        return (dp * scale + 0.5f).toInt()
-    }
+
 }
