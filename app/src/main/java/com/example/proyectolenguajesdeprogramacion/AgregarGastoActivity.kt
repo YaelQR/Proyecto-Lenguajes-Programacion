@@ -19,7 +19,6 @@ import com.google.firebase.auth.FirebaseAuth
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatDelegate
 
 class AgregarGastoActivity : AppCompatActivity() {
     private var ignorarSeleccion = false
@@ -113,7 +112,9 @@ class AgregarGastoActivity : AppCompatActivity() {
             datePicker.show(supportFragmentManager, "selector_fecha")
 
             datePicker.addOnPositiveButtonClickListener { seleccion ->
-                val fechaElegida = formato.format(Date(seleccion))
+                val formatoUTC = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                formatoUTC.timeZone = TimeZone.getTimeZone("UTC")
+                val fechaElegida = formatoUTC.format(Date(seleccion))
                 editTextFecha.setText(fechaElegida)
             }
         }

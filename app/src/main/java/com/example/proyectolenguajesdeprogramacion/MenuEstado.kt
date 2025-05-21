@@ -40,8 +40,7 @@ import com.google.android.material.datepicker.CompositeDateValidator
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
-
-
+import java.util.TimeZone
 
 
 class MenuEstado : AppCompatActivity() {
@@ -67,6 +66,9 @@ class MenuEstado : AppCompatActivity() {
     private var fechaMin: Date? = null
     private var fechaMax: Date? = null
     private val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    val formatoUTC = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).apply {
+        timeZone = TimeZone.getTimeZone("UTC")
+    }
 
     private var tipoGraficoSeleccionado: String = "ganancia"
 
@@ -164,7 +166,7 @@ class MenuEstado : AppCompatActivity() {
             picker.show(supportFragmentManager, "fecha_inicio")
 
             picker.addOnPositiveButtonClickListener { millis ->
-                val fecha = formatoFecha.format(Date(millis))
+                val fecha = formatoUTC.format(Date(millis))
                 fecha1EditText.text = fecha
             }
         }
@@ -196,7 +198,7 @@ class MenuEstado : AppCompatActivity() {
             picker.show(supportFragmentManager, "fecha_fin")
 
             picker.addOnPositiveButtonClickListener { millis ->
-                val fecha = formatoFecha.format(Date(millis))
+                val fecha = formatoUTC.format(Date(millis))
                 fecha2EditText.text = fecha
             }
         }
