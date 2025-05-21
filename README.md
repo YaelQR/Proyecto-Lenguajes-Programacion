@@ -73,3 +73,50 @@ Espera a que sincronice con Gradle y asegúrate de que el entorno esté correcta
 
 ### 📲 Opción 2: Instalar el APK directamente
 
+Si deseas probar la app sin necesidad de abrir Android Studio, puedes usar el archivo APK ya generado.
+
+#### 1. Descargar el APK desde GitHub
+
+En la raíz de este repositorio se encuentra el archivo:  
+**Finanzi-v1.0-debug.apk**
+
+Puedes descargarlo directamente haciendo clic en él desde la interfaz de GitHub y luego presionando el botón **Download**.
+
+#### 2. Transferir el APK al dispositivo Android
+
+Copia el archivo APK al dispositivo por alguno de los siguientes métodos:
+- Utilizando USB
+- Utilizando Correo Electronico
+
+## 🛠️ Cómo generar el archivo APK desde Android Studio
+
+Si deseas generar tu propia versión del APK a partir del código fuente, puedes hacerlo fácilmente desde Android Studio siguiendo estos pasos:
+
+### 1. Abrir el proyecto
+
+Asegúrate de tener el proyecto abierto y correctamente sincronizado con Gradle.
+
+### 2. Acceder al menú de compilación
+
+En la barra superior de Android Studio, ve a: Build > Build Bundle(s) / APK(s) > Build APK(s)
+
+![image](https://github.com/user-attachments/assets/8681033c-f8ae-46b7-bd9e-cd58445ac198)
+
+### 3. Esperar a que se genere
+
+Android Studio compilará tu proyecto y generará el APK correspondiente. Cuando finalice el proceso, verás una notificación en la esquina inferior derecha:
+
+> ✅ **APK(s) generated successfully. Locate or analyze the APK.**
+
+Haz clic en **“locate”** para abrir directamente la carpeta donde se encuentra el archivo generado.
+
+### 4. Ubicación del archivo APK
+
+Por defecto, el APK se guarda en: Proyecto-Lenguajes-Programacion/app/build/outputs/apk/debug/app-debug.apk
+
+![image](https://github.com/user-attachments/assets/22f7edac-a7ae-4562-93c4-e8b74fd5e249)
+
+Si quieres verlo en el explorador de archivos da click derecho en el y selecciona Open in > Explorer
+
+![image](https://github.com/user-attachments/assets/03f9aa1f-c09f-4901-8d7b-41e158b7b843)
+
