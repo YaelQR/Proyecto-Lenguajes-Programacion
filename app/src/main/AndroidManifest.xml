@@ -51,6 +51,16 @@
             android:name=".PerfilActivity"
             android:exported="false" />
         <activity
+            android:name=".InformacionPersonalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CambiarCorreoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CambiarContraActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
