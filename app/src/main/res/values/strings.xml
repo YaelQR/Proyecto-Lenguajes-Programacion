@@ -85,5 +85,9 @@
     <string name="cambiar_foto_de_perfil">Cambiar foto de perfil</string>
     <string name="historial">Historial</string>
     <string name="cambiar_contrase_a">Cambiar contraseña</string>
+    <string name="nueva_contrase_a">Nueva contraseña</string>
+    <string name="confirmar_nueva_contrase_a">Confirmar nueva contraseña</string>
+    <string name="su_contrase_a_actual">Su contraseña actual</string>
+    <string name="actualizar">Actualizar</string>
 
 </resources>
